@@ -33,8 +33,19 @@ public class ModProviders {
                 // Our provider.
                 new ItemModels(output, existingFileHelper)
         );
+        BlockTagGenerator blockTagGenerator = new BlockTagGenerator(output, lookupProvider, existingFileHelper);
         generator.addProvider(
                 event.includeServer(),
+
+                blockTagGenerator
+        );
+        generator.addProvider(
+                event.includeServer(),
+                new ItemTagGenerator(output, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper)
+        );
+        generator.addProvider(
+                event.includeServer(),
+
                 new ModAdvancements(output, lookupProvider, existingFileHelper)
         );
     }
