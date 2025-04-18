@@ -14,6 +14,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
+import sharped.mimishee.addictivetofu.register.CreativeModeTabRegister;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(AddictiveTofu.MODID)
@@ -28,6 +29,7 @@ public class AddictiveTofu
     {
         modEventBus.addListener(this::commonSetup);
         ItemRegister.register(modEventBus);
+        CreativeModeTabRegister.CREATIVE_MODE_TABS.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (AddictiveTofu) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.

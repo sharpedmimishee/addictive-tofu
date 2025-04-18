@@ -1,5 +1,7 @@
 {
   "item.addictivetofu.null_tofu": "Null Tofu",
+  "item.addictivetofu.zunda_crossbow": "Zunda Crossbow",
   "advancements.addictivetofu.main.null_tofu.title": "Gah",
-  "advancements.addictivetofu.main.null_tofu.description": "Power of the Null"
+  "advancements.addictivetofu.main.null_tofu.description": "Power of the Null",
+  "itemGroup.addictivetofu": "Addictive Tofu"
 }
