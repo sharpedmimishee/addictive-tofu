@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
 
-public class itemsregister {
+public class ItemRegister {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AddictiveTofu.MODID);
 
     public static final DeferredItem<Item> NULL_TOFU = ITEMS.register("null_tofu",

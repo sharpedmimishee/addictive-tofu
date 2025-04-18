@@ -12,7 +12,7 @@ import sharped.mimishee.addictivetofu.AddictiveTofu;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = AddictiveTofu.MODID)
-public class providers {
+public class ModProviders {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         // Data generators may require some of these as constructor parameters.
@@ -31,11 +31,11 @@ public class providers {
                 // Since recipes are server data, we only run them in a server datagen.
                 event.includeClient(),
                 // Our provider.
-                new itemmodels(output, existingFileHelper)
+                new ItemModels(output, existingFileHelper)
         );
         generator.addProvider(
                 event.includeServer(),
-                new advancements(output, lookupProvider, existingFileHelper)
+                new ModAdvancements(output, lookupProvider, existingFileHelper)
         );
     }
 }

@@ -4,15 +4,15 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
-import sharped.mimishee.addictivetofu.items.itemsregister;
+import sharped.mimishee.addictivetofu.items.ItemRegister;
 
-public class itemmodels extends ItemModelProvider {
-    public itemmodels(PackOutput output, ExistingFileHelper existingFileHelper) {
+public class ItemModels extends ItemModelProvider {
+    public ItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, AddictiveTofu.MODID, existingFileHelper);
     }
 
     @Override
     protected void registerModels() {
-        basicItem(itemsregister.NULL_TOFU.get());
+        basicItem(ItemRegister.NULL_TOFU.get());
     }
 }
