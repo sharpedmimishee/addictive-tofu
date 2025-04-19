@@ -30,7 +30,6 @@ public class ItemModelsGenerator extends ItemModelProvider {
         basicItem(ItemRegister.ACTIVE_NULL_TOFU.get());
         basicItem(ItemRegister.REDBEAN.get());
         glowCrossBowItem(ItemRegister.ZUNDA_CROSSBOW);
-
     }
 
     private ItemModelBuilder buildItem(String name, String parent, int emissivity, ResourceLocation... layers) {

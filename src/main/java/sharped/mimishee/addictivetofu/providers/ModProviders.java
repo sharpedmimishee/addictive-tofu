@@ -40,7 +40,7 @@ public class ModProviders {
                 // Since recipes are server data, we only run them in a server datagen.
                 event.includeClient(),
                 // Our provider.
-                new ItemModels(output, existingFileHelper)
+                new ItemModelsGenerator(output, existingFileHelper)
         );
         BlockTagGenerator blockTagGenerator = new BlockTagGenerator(output, lookupProvider, existingFileHelper);
         generator.addProvider(

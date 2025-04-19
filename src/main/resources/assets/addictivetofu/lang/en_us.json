@@ -6,11 +6,14 @@
   "item.addictivetofu.adv_tofu": "Advanced Tofu",
   "item.addictivetofu.tf_sword": "TF Sword",
   "item.addictivetofu.zunda_crossbow": "Zunda Crossbow",
+  "item.addictivetofu.redbean": "Redbeans",
   "advancements.addictivetofu.main.root.title": "Addictiveness is unfathomable",
   "advancements.addictivetofu.main.root.description": "Welcome to the Addictive Tofu world.",
   "advancements.addictivetofu.main.null_tofu.title": "Gah",
   "advancements.addictivetofu.main.null_tofu.description": "Power of the Null",
   "advancements.addictivetofu.main.adv_tofu.title": "Next Tofu Generation",
   "advancements.addictivetofu.main.adv_tofu.description": "Make Advance Tofu",
+  "advancements.addictivetofu.main.activated.title": "Activated!",
+  "advancements.addictivetofu.main.activated.description": "This will bring you something...",
   "itemGroup.addictivetofu": "Addictive Tofu"
 }

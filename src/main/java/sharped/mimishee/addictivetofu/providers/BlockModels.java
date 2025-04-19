@@ -5,12 +5,16 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
 import sharped.mimishee.addictivetofu.block.BlockRegister;
+
+import java.util.function.Function;
 
 public class BlockModels extends BlockStateProvider {
 
@@ -24,6 +28,7 @@ public class BlockModels extends BlockStateProvider {
     protected void registerStatesAndModels() {
         this.simpleBlock(BlockRegister.ADV_TOFU_BLOCK.get());
         this.barrelBlock(BlockRegister.ADV_TOFU_BARREL.get());
+        this.cropBlock((CropBlock) sharped.mimishee.addictivetofu.block.BlockRegister.REDBEAN_CROP.get(), "redbean_crop", "redbean_crop");
     }
 
     public void barrelBlock(Block block) {
@@ -35,6 +40,21 @@ public class BlockModels extends BlockStateProvider {
                     .modelFile(age == 5 ? barrel_2 : barrel_1)
                     .build();
         });
+    }
+
+    public void cropBlock(CropBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> states(state, block, modelName, textureName);
+
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] states(BlockState state, CropBlock block, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] =
+                new ConfiguredModel(models().crop(modelName + block.getAge(state),
+                        ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID,
+                                "block/" + textureName + block.getAge(state))).renderType("cutout"));
+        return models;
     }
 
     protected ResourceLocation texture(String name) {

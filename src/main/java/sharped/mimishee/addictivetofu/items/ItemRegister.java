@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
 import sharped.mimishee.addictivetofu.items.tfenergy.TFSwordItems;
-import sharped.mimishee.addictivetofu.blocks.BlockRegister;
+import sharped.mimishee.addictivetofu.block.BlockRegister;
 
 public class ItemRegister {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AddictiveTofu.MODID);
@@ -24,12 +24,14 @@ public class ItemRegister {
             () -> new TFSwordItems(TofuItemTier.TOFUDIAMOND, new Item.Properties().attributes(TFSwordItems.createAttributes(TofuItemTier.TOFUDIAMOND, 4, -2.3F)).stacksTo(1)));
     public static final DeferredItem<Item> ACTIVE_NULL_TOFU = ITEMS.register("active_null_tofu",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(64)));
-//    public static final DeferredItem<Item> ZUNDA_MIRROR = ITEMS.register("zunda_mirror",
-//            () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
+    public static final DeferredItem<Item> ZUNDA_MIRROR = ITEMS.register("zunda_mirror",
+            () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
     public static final DeferredItem<Item> ZUNDA_INGOT = ITEMS.register("zunda_ingot",
         () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> REDBEAN = ITEMS.register("redbean",
             () -> new ItemNameBlockItem(BlockRegister.REDBEAN_CROP.get(), new Item.Properties()));
+    public static final DeferredItem<Item> MAGIC_BEAN = ITEMS.register("magicbean",
+            () -> new ItemNameBlockItem(BlockRegister.MAGIC_BEAN.get(), new Item.Properties()));
     public static final DeferredItem<Item> REDBEAN_PASTE = ITEMS.register("redbean_paste",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).build())));
     public static final DeferredItem<Item> ZUNDA_CROSSBOW = ITEMS.register("zunda_crossbow",
