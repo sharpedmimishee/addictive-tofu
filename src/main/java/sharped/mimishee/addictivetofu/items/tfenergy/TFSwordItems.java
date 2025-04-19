@@ -79,7 +79,7 @@ public class TFSwordItems extends SwordItem implements IEnergyInsertable, IEnerg
             return false;
         } else {
             if (!level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F && tool.damagePerBlock() > 0) {
-                drain(stack, 10, false);
+                drain(stack, 5, false);
             }
 
             return true;
