@@ -29,8 +29,8 @@ public class BlockModels extends BlockStateProvider {
     public void barrelBlock(Block block) {
         getVariantBuilder(block).forAllStates(state -> {
             int age = state.getValue(WeightBaseBlock.TIME);
-            ModelFile barrel_1 = models().cube(name(block), ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "block/barrel_adv_tofu_top"), ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "block/barrel_adv_tofu_top"), texture(name(block) + "_side"), texture(name(block) + "_side"), texture(name(block) + "_side"), texture(name(block) + "_side"));
-            ModelFile barrel_2 = models().cube(name(block) + "_fin", ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "block/barrel_adv_tofu_top_fin"), ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "block/barrel_adv_tofu_top_fin"), texture(name(block) + "_side_fin"), texture(name(block) + "_side_fin"), texture(name(block) + "_side_fin"), texture(name(block) + "_side_fin"));
+            ModelFile barrel_1 = models().cube(name(block), ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "block/barrel_adv_tofu_top"), ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "block/barrel_adv_tofu_top"), texture(name(block) + "_side"), texture(name(block) + "_side"), texture(name(block) + "_side"), texture(name(block) + "_side")).texture("particle", texture(name(block) + "_side"));
+            ModelFile barrel_2 = models().cube(name(block) + "_fin", ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "block/barrel_adv_tofu_top_fin"), ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "block/barrel_adv_tofu_top_fin"), texture(name(block) + "_side_fin"), texture(name(block) + "_side_fin"), texture(name(block) + "_side_fin"), texture(name(block) + "_side_fin")).texture("particle", texture(name(block) + "_side_fin"));
             return ConfiguredModel.builder()
                     .modelFile(age == 5 ? barrel_2 : barrel_1)
                     .build();

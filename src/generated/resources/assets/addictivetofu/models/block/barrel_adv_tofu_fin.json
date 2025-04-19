@@ -4,6 +4,7 @@
     "down": "addictivetofu:block/barrel_adv_tofu_top_fin",
     "east": "addictivetofu:block/barrel_adv_tofu_side_fin",
     "north": "addictivetofu:block/barrel_adv_tofu_side_fin",
+    "particle": "addictivetofu:block/barrel_adv_tofu_side_fin",
     "south": "addictivetofu:block/barrel_adv_tofu_side_fin",
     "up": "addictivetofu:block/barrel_adv_tofu_top_fin",
     "west": "addictivetofu:block/barrel_adv_tofu_side_fin"
