@@ -23,8 +23,10 @@ public class ItemModelsGenerator extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ItemRegister.NULL_TOFU.get());
         basicItem(ItemRegister.ADV_TOFU.get());
+        tfSwordItem(ItemRegister.TF_SWORD);
         simpleBlockItem(BlockRegister.ADV_TOFU_BARREL.get());
         simpleBlockItem(BlockRegister.ADV_TOFU_BLOCK.get());
+
         basicItem(ItemRegister.ACTIVE_NULL_TOFU.get());
         basicItem(ItemRegister.REDBEAN.get());
         glowCrossBowItem(ItemRegister.ZUNDA_CROSSBOW);
@@ -39,6 +41,18 @@ public class ItemModelsGenerator extends ItemModelProvider {
         if (emissivity > 0)
             builder = builder.customLoader(ItemLayerModelBuilder::begin).emissive(emissivity, emissivity, 0).renderType("minecraft:translucent", 0).end();
         return builder;
+    }
+
+    public ItemModelBuilder tfSwordItem(Supplier<? extends Item> item) {
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(item.get());
+
+        withExistingParent(id.getPath() + "_emissive", mcLoc("item/handheld"))
+                .customLoader(ItemLayerModelBuilder::begin).emissive(15, 15, 1).renderType("minecraft:translucent", 1).end()
+                .texture("layer0", modLoc("item/" + id.getPath()))
+                .texture("layer1", modLoc("item/" + id.getPath() + "_emissive"));
+        return withExistingParent(id.getPath(), mcLoc("item/handheld"))
+                .texture("layer0", modLoc("item/" + id.getPath() + "_deactive"))
+                .override().predicate(ResourceLocation.parse("charged"), 1).model(getExistingFile(modLoc("item/" + id.getPath() + "_emissive"))).end();
     }
 
     public ItemModelBuilder glowCrossBowItem(Supplier<? extends Item> item) {

@@ -1,5 +1,6 @@
 package sharped.mimishee.addictivetofu.client;
 
+import baguchan.tofucraft.registry.TofuDataComponents;
 import baguchan.tofucraft.registry.TofuItems;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.component.DataComponents;
@@ -19,6 +20,12 @@ import sharped.mimishee.addictivetofu.items.ZundaCrossbowItem;
 public class ClientRegister {
     @SubscribeEvent
     public static void modelBake(ModelEvent.ModifyBakingResult event) {
+        ItemProperties.register(
+                ItemRegister.TF_SWORD.asItem(),
+                ResourceLocation.withDefaultNamespace("charged"),
+                (p_275891_, p_275892_, p_275893_, p_275894_) -> p_275891_.has(TofuDataComponents.TF_ENERGY_DATA) && p_275891_.get(TofuDataComponents.TF_ENERGY_DATA).storeTF() > 0 ? 1.0F : 0.0F
+        );
+
         ItemProperties.register(
                 ItemRegister.ZUNDA_CROSSBOW.asItem(),
                 ResourceLocation.withDefaultNamespace("pull"),

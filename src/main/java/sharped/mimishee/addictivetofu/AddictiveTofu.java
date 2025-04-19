@@ -28,6 +28,7 @@ public class AddictiveTofu
 
     public AddictiveTofu(IEventBus modEventBus, ModContainer modContainer)
     {
+
         modEventBus.addListener(this::commonSetup);
         BlockRegister.BLOCKS.register(modEventBus);
         ItemRegister.register(modEventBus);
