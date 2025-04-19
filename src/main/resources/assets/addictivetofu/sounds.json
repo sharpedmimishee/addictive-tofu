@@ -14,13 +14,13 @@
   },
   "mob.ankonian.death": {
     "sounds": [
-      "addictivetofu:mob/ankonian/tofuspider_death"
+      "addictivetofu:mob/ankonian/ankonian_death"
     ],
     "subtitle": "subtitles.entity.ankonian.death"
   },
   "mob.ankonian.mesugaki": {
     "sounds": [
-      "addictivetofu:mob/ankonian/tofuspider_mesugaki"
+      "addictivetofu:mob/ankonian/ankonian_mesugaki"
     ],
     "subtitle": "subtitles.entity.ankonian.mesugaki"
   }
