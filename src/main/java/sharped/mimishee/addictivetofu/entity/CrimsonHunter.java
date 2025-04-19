@@ -36,6 +36,9 @@ import sharped.mimishee.addictivetofu.register.ModSounds;
 import javax.annotation.Nullable;
 
 public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
+
+    public AnimationState mesugakiAnimationState = new AnimationState();
+    public int kiddingTick;
     public CrimsonHunter(EntityType<? extends CrimsonHunter> entityType, Level level) {
         super(entityType, level);
     }
@@ -53,6 +56,20 @@ public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
         this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.8F));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
         this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
+    }
+
+    @Override
+    public void baseTick() {
+        super.baseTick();
+    }
+
+    @Override
+    public void handleEntityEvent(byte id) {
+        if (id == 12) {
+            this.mesugakiAnimationState.start(this.tickCount);
+        } else {
+            super.handleEntityEvent(id);
+        }
     }
 
     @Override
@@ -80,7 +97,7 @@ public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.3F).add(Attributes.FOLLOW_RANGE, (double) 12.0F).add(Attributes.MAX_HEALTH, (double) 24.0F).add(Attributes.ARMOR, 3.0F).add(Attributes.ATTACK_DAMAGE, (double) 2.0F);
+        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.3F).add(Attributes.FOLLOW_RANGE, (double) 18.0F).add(Attributes.MAX_HEALTH, (double) 26.0F).add(Attributes.ARMOR, 3.0F).add(Attributes.ATTACK_DAMAGE, (double) 2.0F);
     }
 
     @Nullable
