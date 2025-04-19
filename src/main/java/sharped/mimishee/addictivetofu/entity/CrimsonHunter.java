@@ -92,6 +92,7 @@ public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
         boolean flag = super.killedEntity(level, entity);
         if (flag) {
             this.playSound(ModSounds.ANKONIAN_MESUGAKI.get());
+            this.level().broadcastEntityEvent(this, (byte) 12);
         }
         return flag;
     }
@@ -99,6 +100,7 @@ public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.3F).add(Attributes.FOLLOW_RANGE, (double) 18.0F).add(Attributes.MAX_HEALTH, (double) 26.0F).add(Attributes.ARMOR, 3.0F).add(Attributes.ATTACK_DAMAGE, (double) 2.0F);
     }
+
 
     @Nullable
     @Override
