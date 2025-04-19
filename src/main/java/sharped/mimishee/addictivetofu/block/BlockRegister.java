@@ -18,9 +18,9 @@ import java.util.function.Supplier;
 public class BlockRegister {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(AddictiveTofu.MODID);
 
-    public static final DeferredBlock<Block> ADV_TOFU_BARREL = register("barrel_adv_tofu", () -> new WeightBaseBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.POLISHED_DEEPSLATE)));
+    public static final DeferredBlock<Block> ADV_TOFU_BARREL = register("barrel_adv_tofu", () -> new WeightBaseBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.WOOD)));
 
-    public static final DeferredBlock<Block> ADV_TOFU_BLOCK = register("adv_tofu_block", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.POLISHED_DEEPSLATE)));
+    public static final DeferredBlock<Block> ADV_TOFU_BLOCK = register("adv_tofu_block", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.HEAVY_CORE)));
 
     private static <T extends Block> DeferredBlock<T> baseRegister(String name, Supplier<? extends T> block, Function<DeferredBlock<T>, Supplier<? extends Item>> item) {
         DeferredBlock<T> register = BLOCKS.register(name, block);
