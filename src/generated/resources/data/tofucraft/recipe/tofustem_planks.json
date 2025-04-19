@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "tofucraft:tofustem"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "tofucraft:tofustem_planks"
+  }
+}

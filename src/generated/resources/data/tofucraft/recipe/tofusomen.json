@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tofucraft:tofukinu"
+    },
+    {
+      "item": "tofucraft:rollingpin"
+    },
+    {
+      "item": "tofucraft:salt"
+    },
+    {
+      "item": "tofucraft:starch"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "tofucraft:tofusomen"
+  }
+}

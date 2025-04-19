@@ -1,7 +1,12 @@
 {
+  "block.addictivetofu.adv_tofu_block": "Advanced Tofu Block",
+  "block.addictivetofu.barrel_adv_tofu": "Advanced Tofu Barrel",
   "item.addictivetofu.null_tofu": "Null Tofu",
+  "item.addictivetofu.adv_tofu": "Advanced Tofu",
   "item.addictivetofu.zunda_crossbow": "Zunda Crossbow",
   "advancements.addictivetofu.main.null_tofu.title": "Gah",
   "advancements.addictivetofu.main.null_tofu.description": "Power of the Null",
+  "advancements.addictivetofu.main.adv_tofu.title": "Next Tofu Generation",
+  "advancements.addictivetofu.main.adv_tofu.description": "Make Advance Tofu",
   "itemGroup.addictivetofu": "Addictive Tofu"
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:crops/soybean"
+    },
+    {
+      "tag": "c:crops/wheat"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tofucraft:soystick"
+  }
+}

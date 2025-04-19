@@ -1,5 +1,8 @@
 {
+  "block.addictivetofu.adv_tofu_block": "活性化した豆腐ブロック",
+  "block.addictivetofu.barrel_adv_tofu": "活性化した豆腐の樽",
   "item.addictivetofu.null_tofu": "虚無豆腐",
+  "item.addictivetofu.adv_tofu": "活性化した豆腐",
   "item.addictivetofu.zunda_crossbow": "ずんだクロスボウ",
   "advancements.addictivetofu.main.null_tofu.title": "ｶﾞｯ",
   "advancements.addictivetofu.main.null_tofu.description": "虚無の力",

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "ingredient": {
+    "item": "tofucraft:tofuhamburg_raw"
+  },
+  "result": {
+    "count": 1,
+    "id": "tofucraft:tofuhamburg"
+  }
+}

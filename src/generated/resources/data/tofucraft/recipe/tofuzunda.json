@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "tofucraft:zunda"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "tofucraft:starch"
+    },
+    {
+      "item": "tofucraft:bottle_dashi"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tofucraft:tofuzunda"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "addictivetofu:block/barrel_adv_tofu_top",
+    "east": "addictivetofu:block/barrel_adv_tofu_side",
+    "north": "addictivetofu:block/barrel_adv_tofu_side",
+    "south": "addictivetofu:block/barrel_adv_tofu_side",
+    "up": "addictivetofu:block/barrel_adv_tofu_top",
+    "west": "addictivetofu:block/barrel_adv_tofu_side"
+  }
+}
