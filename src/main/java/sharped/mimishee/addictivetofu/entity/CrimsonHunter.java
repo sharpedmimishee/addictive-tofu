@@ -1,6 +1,7 @@
 package sharped.mimishee.addictivetofu.entity;
 
 import baguchan.tofucraft.entity.AbstractTofunian;
+import baguchan.tofucraft.registry.TofuItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -116,6 +117,9 @@ public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
         this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ItemRegister.ANKO_BOW.asItem()));
+        if (random.nextFloat() < 0.25F) {
+            this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(TofuItems.TOFU_METAL_HELMET.get()));
+        }
     }
 
     @Override
