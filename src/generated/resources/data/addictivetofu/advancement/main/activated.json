@@ -1,0 +1,36 @@
+{
+  "parent": "addictivetofu:main/gah",
+  "criteria": {
+    "has_active_null_tofu": {
+      "conditions": {
+        "items": [
+          {
+            "items": "addictivetofu:active_null_tofu"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.addictivetofu.main.activated.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "addictivetofu:active_null_tofu"
+    },
+    "title": {
+      "translate": "advancements.addictivetofu.main.activated.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_active_null_tofu"
+    ]
+  ],
+  "rewards": {
+    "experience": 1000
+  },
+  "sends_telemetry_event": true
+}

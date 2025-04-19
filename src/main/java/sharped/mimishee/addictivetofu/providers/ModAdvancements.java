@@ -47,21 +47,39 @@ public class ModAdvancements extends AdvancementProvider {
             AdvancementHolder gah = Advancement.Builder.advancement()
                     .display(
                             new ItemStack(ItemRegister.NULL_TOFU.get()),
-                            Component.translatable("advancements.addictivetofu.main.null_tofu.title"),
-                            Component.translatable("advancements.addictivetofu.main.null_tofu.description"),
+                            Component.translatable("advancements.addictivetofu.main.gah.title"),
+                            Component.translatable("advancements.addictivetofu.main.gah.description"),
                             // The background texture. Use null if you don't want a background texture (for non-root advancements
                             null,
                             AdvancementType.TASK,// The frame type. Valid values are AdvancementType.TASK, CHALLENGE, or GOAL.
                             true, //Toast
                             true, //chat
-                            false //hidden or not
+                            true //hidden or not
                     )
                     .parent(root)
                     .addCriterion("has_null_tofu", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegister.NULL_TOFU))
                     .requirements(AdvancementRequirements.anyOf(List.of("has_null_tofu")))
                     .rewards(AdvancementRewards.Builder.experience(100))
                     .save(consumer,
-                            ResourceLocation.fromNamespaceAndPath("addictivetofu", "main/null_tofu"),
+                            ResourceLocation.fromNamespaceAndPath("addictivetofu", "main/gah"),
+                            existingFileHelper);
+            AdvancementHolder Activated = Advancement.Builder.advancement()
+                    .display(
+                            new ItemStack(ItemRegister.ACTIVE_NULL_TOFU.get()),
+                            Component.translatable("advancements.addictivetofu.main.activated.title"),
+                            Component.translatable("advancements.addictivetofu.main.activated.description"),
+                            null,
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .parent(gah)
+                    .addCriterion("has_active_null_tofu", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegister.ACTIVE_NULL_TOFU))
+                    .requirements(AdvancementRequirements.anyOf(List.of("has_active_null_tofu")))
+                    .rewards(AdvancementRewards.Builder.experience(1000))
+                    .save(consumer,
+                            ResourceLocation.fromNamespaceAndPath("addictivetofu", "main/activated"),
                             existingFileHelper);
 
             AdvancementHolder advance_tofu = Advancement.Builder.advancement()

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "addictivetofu:block/redbean_crop0"
+    },
+    "age=1": {
+      "model": "addictivetofu:block/redbean_crop1"
+    },
+    "age=2": {
+      "model": "addictivetofu:block/redbean_crop2"
+    },
+    "age=3": {
+      "model": "addictivetofu:block/redbean_crop3"
+    },
+    "age=4": {
+      "model": "addictivetofu:block/redbean_crop4"
+    }
+  }
+}

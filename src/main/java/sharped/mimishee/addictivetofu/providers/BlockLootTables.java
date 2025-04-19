@@ -18,6 +18,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import sharped.mimishee.addictivetofu.block.BlockRegister;
+import sharped.mimishee.addictivetofu.block.RedBeanCropBlock;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 
 import java.util.HashSet;
@@ -49,6 +50,12 @@ public class BlockLootTables extends BlockLootSubProvider {
         add(BlockRegister.ADV_TOFU_BARREL.get(), applyExplosionDecay(BlockRegister.ADV_TOFU_BARREL.get(), LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(TofuItems.ADVANCE_TOFUGEM.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3.0F))))).withPool(LootPool.lootPool().add(LootItem.lootTableItem(ItemRegister.ADV_TOFU.get()).when(tofugemAdvBuilder).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3.0F)))))).withPool(LootPool.lootPool().add(LootItem.lootTableItem(Blocks.BARREL).when(tofugemAdvBuilder).when(ExplosionCondition.survivesExplosion()).otherwise(LootItem.lootTableItem(BlockRegister.ADV_TOFU_BARREL.get()).when(ExplosionCondition.survivesExplosion())))));
 
         this.add(BlockRegister.ADV_TOFU_BLOCK.get(), createSingleItemTable(BlockRegister.ADV_TOFU_BLOCK.get()));
+
+        LootItemCondition.Builder lootItemConditionBuilder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockRegister.REDBEAN_CROP.get())
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(RedBeanCropBlock.AGE, 4));
+
+        this.add(BlockRegister.REDBEAN_CROP.get(), this.createCropDrops(BlockRegister.REDBEAN_CROP.get(),
+                ItemRegister.REDBEAN.get(), ItemRegister.REDBEAN.get(), lootItemConditionBuilder));
     }
 
     @Override

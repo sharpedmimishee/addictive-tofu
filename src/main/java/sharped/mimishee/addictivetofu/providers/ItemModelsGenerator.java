@@ -14,8 +14,8 @@ import sharped.mimishee.addictivetofu.items.ItemRegister;
 
 import java.util.function.Supplier;
 
-public class ItemModels extends ItemModelProvider {
-    public ItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
+public class ItemModelsGenerator extends ItemModelProvider {
+    public ItemModelsGenerator(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, AddictiveTofu.MODID, existingFileHelper);
     }
 
@@ -28,6 +28,7 @@ public class ItemModels extends ItemModelProvider {
         simpleBlockItem(BlockRegister.ADV_TOFU_BLOCK.get());
 
         basicItem(ItemRegister.ACTIVE_NULL_TOFU.get());
+        basicItem(ItemRegister.REDBEAN.get());
         glowCrossBowItem(ItemRegister.ZUNDA_CROSSBOW);
         bowItem(ItemRegister.ANKO_BOW);
         spawnEggItem(ItemRegister.ANKONIAN_SPAWN_EGG.asItem());
