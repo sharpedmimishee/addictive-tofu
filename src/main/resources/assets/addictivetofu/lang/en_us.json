@@ -6,5 +6,7 @@
   "advancements.addictivetofu.main.root.description": "Welcome to the Addictive Tofu world.",
   "advancements.addictivetofu.main.null_tofu.title": "Gah",
   "advancements.addictivetofu.main.null_tofu.description": "Power of the Null",
+  "advancements.addictivetofu.main.activated.title": "Activated!",
+  "advancements.addictivetofu.main.activated.description": "This will bring something to you...",
   "itemGroup.addictivetofu": "Addictive Tofu"
 }

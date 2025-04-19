@@ -1,5 +1,8 @@
 # addictive-tofu
-An addon for TofuCraftReload.  
+<p align="center">
+<img src="src/main/resources/logo.png" alt="Icon of AddictiveTofu"><br>
+An addon for TofuCraftReload.</p><br>
+
 ## What is this
 As mentioned above, this is an addon for TofuCraftReload.  
 This addon adds some tofu, tofu-tech things, items and so on!  
