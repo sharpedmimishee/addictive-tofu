@@ -6,11 +6,19 @@
   "item.addictivetofu.adv_tofu": "Advanced Tofu",
   "item.addictivetofu.tf_sword": "TF Sword",
   "item.addictivetofu.zunda_crossbow": "Zunda Crossbow",
+  "item.addictivetofu.ankonian_spawn_egg": "Ankonian Spawn Egg",
+  "item.addictivetofu.crimson_hunter_spawn_egg": "Crimson Hunter Spawn Egg",
+  "entity.addictivetofu.ankonian": "Ankonian",
+  "entity.addictivetofu.crimson_hunter": "Crimson Hunter",
   "advancements.addictivetofu.main.root.title": "Addictiveness is unfathomable",
   "advancements.addictivetofu.main.root.description": "Welcome to the Addictive Tofu world.",
   "advancements.addictivetofu.main.null_tofu.title": "Gah",
   "advancements.addictivetofu.main.null_tofu.description": "Power of the Null",
   "advancements.addictivetofu.main.adv_tofu.title": "Next Tofu Generation",
   "advancements.addictivetofu.main.adv_tofu.description": "Make Advance Tofu",
-  "itemGroup.addictivetofu": "Addictive Tofu"
+  "itemGroup.addictivetofu": "Addictive Tofu",
+  "subtitles.entity.ankonian.idle": "Ankonian Idle",
+  "subtitles.entity.ankonian.hurt": "Ankonian Hurt",
+  "subtitles.entity.ankonian.death": "Ankonian Death",
+  "subtitles.entity.ankonian.mesugaki": "Ankonian bullying"
 }

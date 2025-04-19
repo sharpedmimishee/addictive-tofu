@@ -4,10 +4,12 @@ package sharped.mimishee.addictivetofu.items;
 import baguchan.tofucraft.registry.TofuItemTier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
+import sharped.mimishee.addictivetofu.entity.EntityRegister;
 import sharped.mimishee.addictivetofu.items.tfenergy.TFSwordItems;
 
 public class ItemRegister {
@@ -25,6 +27,12 @@ public class ItemRegister {
 //            () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
     public static final DeferredItem<Item> ZUNDA_CROSSBOW = ITEMS.register("zunda_crossbow",
             () -> new ZundaCrossbowItem(new Item.Properties().rarity(Rarity.RARE).durability(584).stacksTo(1)));
+    public static final DeferredItem<Item> ANKO_BOW = ITEMS.register("anko_bow",
+            () -> new AnkoBowItem(new Item.Properties().rarity(Rarity.UNCOMMON).durability(484).stacksTo(1)));
+    public static final DeferredItem<Item> ANKONIAN_SPAWN_EGG = ITEMS.register("ankonian_spawn_egg",
+            () -> new SpawnEggItem(EntityRegister.ANKONIAN.get(), 0xF6E9EF, 0xE4C7D5, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> CRIMSON_HUNTER_SPAWN_EGG = ITEMS.register("crimson_hunter_spawn_egg",
+            () -> new SpawnEggItem(EntityRegister.CRIMSON_HUNTER.get(), 0xF6E9EF, 0x5E1C47, new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);

@@ -20,6 +20,6 @@ public class ItemTagGenerator extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         this.tag(ItemTags.CROSSBOW_ENCHANTABLE).add(ItemRegister.ZUNDA_CROSSBOW.get());
         this.tag(ItemTags.SWORDS).add(ItemRegister.TF_SWORD.get());
-
+        this.tag(ItemTags.BOW_ENCHANTABLE).add(ItemRegister.ANKO_BOW.get());
     }
 }

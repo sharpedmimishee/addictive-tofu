@@ -11,8 +11,14 @@ import net.minecraft.world.item.component.ChargedProjectiles;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
+import sharped.mimishee.addictivetofu.client.model.AnkonianModel;
+import sharped.mimishee.addictivetofu.client.model.CrimsonHunterModel;
+import sharped.mimishee.addictivetofu.client.render.AnkonianRender;
+import sharped.mimishee.addictivetofu.client.render.CrimsonHunterRender;
+import sharped.mimishee.addictivetofu.entity.EntityRegister;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 import sharped.mimishee.addictivetofu.items.ZundaCrossbowItem;
 
@@ -63,5 +69,30 @@ public class ClientRegister {
             ChargedProjectiles chargedprojectiles = p_329796_.get(DataComponents.CHARGED_PROJECTILES);
             return chargedprojectiles != null && chargedprojectiles.contains(TofuItems.ZUNDA_ARROW.get()) ? 1.0F : 0.0F;
         });
+
+        ItemProperties.register(ItemRegister.ANKO_BOW.asItem(), ResourceLocation.withDefaultNamespace("pull"), (p_344163_, p_344164_, p_344165_, p_344166_) -> {
+            if (p_344165_ == null) {
+                return 0.0F;
+            } else {
+                return p_344165_.getUseItem() != p_344163_ ? 0.0F : (float) (p_344163_.getUseDuration(p_344165_) - p_344165_.getUseItemRemainingTicks()) / 20.0F;
+            }
+        });
+        ItemProperties.register(
+                ItemRegister.ANKO_BOW.asItem(),
+                ResourceLocation.withDefaultNamespace("pulling"),
+                (p_174630_, p_174631_, p_174632_, p_174633_) -> p_174632_ != null && p_174632_.isUsingItem() && p_174632_.getUseItem() == p_174630_ ? 1.0F : 0.0F
+        );
+    }
+
+    @SubscribeEvent
+    public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(EntityRegister.ANKONIAN.get(), AnkonianRender::new);
+        event.registerEntityRenderer(EntityRegister.CRIMSON_HUNTER.get(), CrimsonHunterRender::new);
+    }
+
+    @SubscribeEvent
+    public static void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(ModModelLayers.ANKONIAN, AnkonianModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.CRIMSON_HUNTER, CrimsonHunterModel::createBodyLayer);
     }
 }

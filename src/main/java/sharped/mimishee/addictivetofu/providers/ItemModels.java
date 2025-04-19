@@ -29,6 +29,9 @@ public class ItemModels extends ItemModelProvider {
 
         basicItem(ItemRegister.ACTIVE_NULL_TOFU.get());
         glowCrossBowItem(ItemRegister.ZUNDA_CROSSBOW);
+        bowItem(ItemRegister.ANKO_BOW);
+        spawnEggItem(ItemRegister.ANKONIAN_SPAWN_EGG.asItem());
+        spawnEggItem(ItemRegister.CRIMSON_HUNTER_SPAWN_EGG.asItem());
 
     }
 
@@ -71,6 +74,18 @@ public class ItemModels extends ItemModelProvider {
                 .override().predicate(ResourceLocation.parse("charged"), 1).model(getExistingFile(modLoc("item/" + id.getPath() + "_arrow"))).end()
                 .override().predicate(ResourceLocation.parse("charged"), 1).predicate(ResourceLocation.parse("zunda_arrow"), 1).model(getExistingFile(modLoc("item/" + id.getPath() + "_zunda_arrow"))).end()
                 .override().predicate(ResourceLocation.parse("charged"), 1).predicate(ResourceLocation.parse("firework"), 1).model(getExistingFile(modLoc("item/" + id.getPath() + "_firework"))).end();
+    }
+
+    public ItemModelBuilder bowItem(Supplier<? extends Item> item) {
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(item.get());
+        withExistingParent(id.getPath() + "_pulling_0", mcLoc("item/bow")).texture("layer0", modLoc("item/" + id.getPath() + "_pulling_0"));
+        withExistingParent(id.getPath() + "_pulling_1", mcLoc("item/bow")).texture("layer0", modLoc("item/" + id.getPath() + "_pulling_1"));
+        withExistingParent(id.getPath() + "_pulling_2", mcLoc("item/bow")).texture("layer0", modLoc("item/" + id.getPath() + "_pulling_2"));
+        return withExistingParent(id.getPath(), mcLoc("item/bow"))
+                .texture("layer0", modLoc("item/" + id.getPath()))
+                .override().predicate(ResourceLocation.parse("pulling"), 1).model(getExistingFile(modLoc("item/" + id.getPath() + "_pulling_0"))).end()
+                .override().predicate(ResourceLocation.parse("pulling"), 1).predicate(ResourceLocation.parse("pull"), 0.65F).model(getExistingFile(modLoc("item/" + id.getPath() + "_pulling_1"))).end()
+                .override().predicate(ResourceLocation.parse("pulling"), 1).predicate(ResourceLocation.parse("pull"), 0.9F).model(getExistingFile(modLoc("item/" + id.getPath() + "_pulling_2"))).end();
     }
 
 }
