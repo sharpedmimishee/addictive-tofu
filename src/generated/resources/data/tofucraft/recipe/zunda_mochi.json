@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tofucraft:zunda"
+    },
+    {
+      "tag": "c:crops/rice"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tofucraft:zunda_mochi"
+  }
+}

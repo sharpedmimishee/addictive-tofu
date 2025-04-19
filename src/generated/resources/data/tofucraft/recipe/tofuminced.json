@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tofucraft:tofumomen"
+    },
+    {
+      "item": "tofucraft:rollingpin"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tofucraft:tofuminced"
+  }
+}

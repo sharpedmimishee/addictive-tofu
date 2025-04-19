@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tofucraft:bottle_dashi"
+    },
+    {
+      "item": "tofucraft:bottle_soysause"
+    },
+    {
+      "tag": "c:dusts/salt"
+    },
+    {
+      "item": "tofucraft:sprouts"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tofucraft:moyashiitame"
+  }
+}

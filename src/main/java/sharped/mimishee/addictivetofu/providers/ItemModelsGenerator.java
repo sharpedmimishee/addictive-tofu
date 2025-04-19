@@ -9,6 +9,7 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.loaders.ItemLayerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
+import sharped.mimishee.addictivetofu.block.BlockRegister;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 
 import java.util.function.Supplier;
@@ -21,6 +22,9 @@ public class ItemModelsGenerator extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(ItemRegister.NULL_TOFU.get());
+        basicItem(ItemRegister.ADV_TOFU.get());
+        simpleBlockItem(BlockRegister.ADV_TOFU_BARREL.get());
+        simpleBlockItem(BlockRegister.ADV_TOFU_BLOCK.get());
         basicItem(ItemRegister.ACTIVE_NULL_TOFU.get());
         basicItem(ItemRegister.REDBEAN.get());
         glowCrossBowItem(ItemRegister.ZUNDA_CROSSBOW);

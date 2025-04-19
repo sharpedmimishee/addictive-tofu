@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:milk/soy_milk"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tofucraft:soymilk_honey"
+  }
+}

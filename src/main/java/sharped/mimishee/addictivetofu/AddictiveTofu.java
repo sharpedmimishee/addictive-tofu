@@ -13,7 +13,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
-import sharped.mimishee.addictivetofu.blocks.BlockRegister;
+import sharped.mimishee.addictivetofu.block.BlockRegister;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 import sharped.mimishee.addictivetofu.register.CreativeModeTabRegister;
 
@@ -29,7 +29,7 @@ public class AddictiveTofu
     public AddictiveTofu(IEventBus modEventBus, ModContainer modContainer)
     {
         modEventBus.addListener(this::commonSetup);
-        BlockRegister.register(modEventBus);
+        BlockRegister.BLOCKS.register(modEventBus);
         ItemRegister.register(modEventBus);
         CreativeModeTabRegister.CREATIVE_MODE_TABS.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.

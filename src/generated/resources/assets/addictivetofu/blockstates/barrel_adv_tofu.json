@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "stat=used,time=0": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=used,time=1": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=used,time=2": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=used,time=3": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=used,time=4": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=used,time=5": {
+      "model": "addictivetofu:block/barrel_adv_tofu_fin"
+    },
+    "stat=using,time=0": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=using,time=1": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=using,time=2": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=using,time=3": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=using,time=4": {
+      "model": "addictivetofu:block/barrel_adv_tofu"
+    },
+    "stat=using,time=5": {
+      "model": "addictivetofu:block/barrel_adv_tofu_fin"
+    }
+  }
+}

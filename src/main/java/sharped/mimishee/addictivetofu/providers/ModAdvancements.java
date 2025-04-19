@@ -81,6 +81,24 @@ public class ModAdvancements extends AdvancementProvider {
                     .save(consumer,
                             ResourceLocation.fromNamespaceAndPath("addictivetofu", "main/activated"),
                             existingFileHelper);
+
+            AdvancementHolder advance_tofu = Advancement.Builder.advancement()
+                    .display(
+                            new ItemStack(ItemRegister.ADV_TOFU.get()),
+                            Component.translatable("advancements.addictivetofu.main.adv_tofu.title"),
+                            Component.translatable("advancements.addictivetofu.main.adv_tofu.description"),
+                            // The background texture. Use null if you don't want a background texture (for non-root advancements
+                            null,
+                            AdvancementType.TASK,// The frame type. Valid values are AdvancementType.TASK, CHALLENGE, or GOAL.
+                            true, //Toast
+                            true, //chat
+                            false //hidden or not
+                    )
+                    .parent(root)
+                    .addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegister.ADV_TOFU))
+                    .save(consumer,
+                            ResourceLocation.fromNamespaceAndPath("addictivetofu", "main/adv_tofu"),
+                            existingFileHelper);
         }
     }
 }

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "tofucraft:tofugrilled"
+    },
+    "M": {
+      "item": "tofucraft:tofuhamburg"
+    }
+  },
+  "pattern": [
+    "G",
+    "M",
+    "G"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tofucraft:tofu_buns_burger"
+  }
+}

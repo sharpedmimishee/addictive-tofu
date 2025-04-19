@@ -16,6 +16,8 @@ public class ItemRegister {
 
     public static final DeferredItem<Item> NULL_TOFU = ITEMS.register("null_tofu",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(64)));
+    public static final DeferredItem<Item> ADV_TOFU = ITEMS.register("adv_tofu",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> ACTIVE_NULL_TOFU = ITEMS.register("active_null_tofu",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(64)));
 //    public static final DeferredItem<Item> ZUNDA_MIRROR = ITEMS.register("zunda_mirror",

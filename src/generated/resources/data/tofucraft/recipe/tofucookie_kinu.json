@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "tofucraft:tofukinu"
+    },
+    "X": {
+      "tag": "c:crops/wheat"
+    }
+  },
+  "pattern": [
+    "X#X"
+  ],
+  "result": {
+    "count": 8,
+    "id": "tofucraft:tofucookie"
+  }
+}
