@@ -16,6 +16,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
 import sharped.mimishee.addictivetofu.client.animations.AnkonianAnimations;
 import sharped.mimishee.addictivetofu.entity.AbstractAnkonian;
+import sharped.mimishee.addictivetofu.items.ItemRegister;
 
 public class AnkonianModel<T extends AbstractAnkonian> extends HierarchicalModel<T> implements ArmedModel, HeadedModel, IArmor {
     private final ModelPart root;
@@ -92,16 +93,28 @@ public class AnkonianModel<T extends AbstractAnkonian> extends HierarchicalModel
                 this.right_arm.zRot = this.attackTime * 0.5F;
             }
         } else if (entity.isAggressive()) {
-            if (entity.getMainArm() == HumanoidArm.RIGHT) {
-                this.applyStatic(AnkonianAnimations.anger_right);
+            right_arm.resetPose();
+            left_arm.resetPose();
+            if (entity.isHolding(ItemRegister.ANKO_BOW.asItem())) {
+                if (entity.getMainArm() == HumanoidArm.RIGHT) {
+                    this.right_arm.yRot = -0.1F + this.head.yRot;
+                    this.left_arm.yRot = 0.1F + this.head.yRot + 0.4F;
+                    this.right_arm.xRot = (float) (-Math.PI / 2) + this.head.xRot;
+                    this.left_arm.xRot = (float) (-Math.PI / 2) + this.head.xRot;
+                } else {
+                    this.right_arm.yRot = -0.1F + this.head.yRot - 0.4F;
+                    this.left_arm.yRot = 0.1F + this.head.yRot;
+                    this.right_arm.xRot = (float) (-Math.PI / 2) + this.head.xRot;
+                    this.left_arm.xRot = (float) (-Math.PI / 2) + this.head.xRot;
+                }
             } else {
-                this.applyStatic(AnkonianAnimations.anger_left);
+                if (entity.getMainArm() == HumanoidArm.RIGHT) {
+                    this.applyStatic(AnkonianAnimations.anger_right);
+                } else {
+                    this.applyStatic(AnkonianAnimations.anger_left);
+                }
             }
         }
-
-        this.right_arm.visible = true;
-        this.left_arm.visible = true;
-        this.body.visible = true;
     }
 
 

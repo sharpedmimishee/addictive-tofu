@@ -55,7 +55,7 @@ public class CrimsonHunterModel<T extends CrimsonHunter> extends AnkonianModel<T
 
         PartDefinition right_arm = root.addOrReplaceChild("right_arm", CubeListBuilder.create().texOffs(28, 16).addBox(-2.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offset(-3.0F, -17.5F, 0.0F));
 
-        PartDefinition left_arm = root.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(28, 16).mirror().addBox(0.0F, -6.0F, -1.0F, 2.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(3.0F, -11.5F, 0.0F));
+        PartDefinition left_arm = root.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(28, 16).mirror().addBox(0.0F, 0.0F, -1.0F, 2.0F, 8.0F, 2.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(3.0F, -17.5F, 0.0F));
 
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
@@ -63,7 +63,7 @@ public class CrimsonHunterModel<T extends CrimsonHunter> extends AnkonianModel<T
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-        if (entity.mesugakiAnimationState.isStarted() && entity.isAggressive()) {
+        if (entity.mesugakiAnimationState.isStarted() && !entity.isAggressive()) {
             right_arm.resetPose();
             left_arm.resetPose();
             body.resetPose();
