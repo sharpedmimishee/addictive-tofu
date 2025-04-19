@@ -25,6 +25,7 @@ public class ItemModels extends ItemModelProvider {
         basicItem(ItemRegister.ADV_TOFU.get());
         simpleBlockItem(BlockRegister.ADV_TOFU_BARREL.get());
         simpleBlockItem(BlockRegister.ADV_TOFU_BLOCK.get());
+        basicItem(ItemRegister.ACTIVE_NULL_TOFU.get());
         glowCrossBowItem(ItemRegister.ZUNDA_CROSSBOW);
 
     }

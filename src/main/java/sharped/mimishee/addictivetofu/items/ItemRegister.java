@@ -15,6 +15,10 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(64)));
     public static final DeferredItem<Item> ADV_TOFU = ITEMS.register("adv_tofu",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ACTIVE_NULL_TOFU = ITEMS.register("active_null_tofu",
+            () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(64)));
+//    public static final DeferredItem<Item> ZUNDA_MIRROR = ITEMS.register("zunda_mirror",
+//            () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
     public static final DeferredItem<Item> ZUNDA_CROSSBOW = ITEMS.register("zunda_crossbow",
             () -> new ZundaCrossbowItem(new Item.Properties().rarity(Rarity.RARE).durability(584).stacksTo(1)));
 
