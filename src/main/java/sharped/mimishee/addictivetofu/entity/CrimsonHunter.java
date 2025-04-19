@@ -38,9 +38,9 @@ import javax.annotation.Nullable;
 public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
 
     public AnimationState mesugakiAnimationState = new AnimationState();
-    public int kiddingTick;
     public CrimsonHunter(EntityType<? extends CrimsonHunter> entityType, Level level) {
         super(entityType, level);
+        this.xpReward = 12;
     }
 
     @Override

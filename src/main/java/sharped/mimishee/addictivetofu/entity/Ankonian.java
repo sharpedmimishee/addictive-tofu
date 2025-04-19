@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
 public class Ankonian extends AbstractAnkonian {
     public Ankonian(EntityType<? extends Ankonian> entityType, Level level) {
         super(entityType, level);
+        this.xpReward = 8;
     }
 
     @Override
