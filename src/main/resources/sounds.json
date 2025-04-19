@@ -1,26 +1,26 @@
 {
   "mob.ankonian.ambient": {
     "sounds": [
-      "tofucraft:mob/ankonian/ankonian_idle",
-      "tofucraft:mob/ankonian/ankonian_idle2"
+      "addictivetofu:mob/ankonian/ankonian_idle",
+      "addictivetofu:mob/ankonian/ankonian_idle2"
     ],
     "subtitle": "subtitles.entity.ankonian.idle"
   },
   "mob.ankonian.hurt": {
     "sounds": [
-      "tofucraft:mob/ankonian/ankonian_hurt"
+      "addictivetofu:mob/ankonian/ankonian_hurt"
     ],
     "subtitle": "subtitles.entity.ankonian.hurt"
   },
   "mob.ankonian.death": {
     "sounds": [
-      "tofucraft:mob/ankonian/tofuspider_death"
+      "addictivetofu:mob/ankonian/tofuspider_death"
     ],
     "subtitle": "subtitles.entity.ankonian.death"
   },
   "mob.ankonian.mesugaki": {
     "sounds": [
-      "tofucraft:mob/ankonian/tofuspider_mesugaki"
+      "addictivetofu:mob/ankonian/tofuspider_mesugaki"
     ],
     "subtitle": "subtitles.entity.ankonian.mesugaki"
   }
