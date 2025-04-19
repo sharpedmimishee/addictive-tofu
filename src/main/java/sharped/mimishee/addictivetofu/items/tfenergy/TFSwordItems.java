@@ -109,7 +109,7 @@ public class TFSwordItems extends SwordItem implements IEnergyInsertable, IEnerg
 
     @Override
     public int getEnergyMax(ItemStack inst) {
-        return inst.get(TofuDataComponents.TF_ENERGY_DATA) != null ? ((TFEnergyData) inst.get(TofuDataComponents.TF_ENERGY_DATA)).maxTF() : 5000;
+        return inst.get(TofuDataComponents.TF_ENERGY_DATA) != null ? ((TFEnergyData) inst.get(TofuDataComponents.TF_ENERGY_DATA)).maxTF() : 10000;
     }
 
     @Override
