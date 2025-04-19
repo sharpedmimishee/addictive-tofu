@@ -6,6 +6,7 @@
   "item.addictivetofu.adv_tofu": "活性化した豆腐",
   "item.addictivetofu.tf_sword": "TFソード",
   "item.addictivetofu.zunda_crossbow": "ずんだクロスボウ",
+  "item.addictivetofu.anko_bow": "あんこ弓",
   "item.addictivetofu.redbean": "小豆",
   "item.addictivetofu.ankonian_spawn_egg": "アンコニアンのスポーンエッグ",
   "item.addictivetofu.crimson_hunter_spawn_egg": "クリムゾンハンターのスポーンエッグ",
@@ -17,7 +18,6 @@
   "advancements.addictivetofu.main.null_tofu.description": "虚無の力",
   "advancements.addictivetofu.main.activated.title": "活性化!",
   "advancements.addictivetofu.main.activated.description": "此れは貴方に何かを齎すだろう...",
-  "itemGroup.addictivetofu": "Addictive Tofu"
   "itemGroup.addictivetofu": "Addictive Tofu",
   "subtitles.entity.ankonian.idle": "アンコニアンがくちぶさむ",
   "subtitles.entity.ankonian.hurt": "アンコニアンがダメージを受ける",
