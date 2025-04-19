@@ -5,6 +5,7 @@ As mentioned above, this is an addon for TofuCraftReload.
 This addon adds some tofu, tofu-tech things, items and so on!  
 ## Feature(Include plan)
 - Tofu
+- more professions for Tofunian
 - end-game things
 - tofu tech things
 - more tofu armours and tools

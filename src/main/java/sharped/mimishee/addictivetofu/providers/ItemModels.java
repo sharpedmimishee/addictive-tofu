@@ -21,6 +21,7 @@ public class ItemModels extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(ItemRegister.NULL_TOFU.get());
+        basicItem(ItemRegister.ACTIVE_NULL_TOFU.get());
         glowCrossBowItem(ItemRegister.ZUNDA_CROSSBOW);
 
     }

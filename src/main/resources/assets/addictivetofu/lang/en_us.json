@@ -1,6 +1,9 @@
 {
   "item.addictivetofu.null_tofu": "Null Tofu",
+  "item.addictivetofu.active_null_tofu": "Active Null Tofu",
   "item.addictivetofu.zunda_crossbow": "Zunda Crossbow",
+  "advancements.addictivetofu.main.root.title": "Addictiveness is unfathomable",
+  "advancements.addictivetofu.main.root.description": "Welcome to the Addictive Tofu world.",
   "advancements.addictivetofu.main.null_tofu.title": "Gah",
   "advancements.addictivetofu.main.null_tofu.description": "Power of the Null",
   "itemGroup.addictivetofu": "Addictive Tofu"
