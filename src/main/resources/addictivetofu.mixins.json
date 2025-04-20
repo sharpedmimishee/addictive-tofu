@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "sharped.mimishee.addictivetofu.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MultiNoiseBiomeSourceAccessor",
+    "WorldStemMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
