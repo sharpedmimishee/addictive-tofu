@@ -17,7 +17,6 @@ import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.RangedBowAttackGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
@@ -31,6 +30,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import sharped.mimishee.addictivetofu.entity.goal.UseItemWithSwitchItemGoal;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 import sharped.mimishee.addictivetofu.register.ModSounds;
 
@@ -48,6 +48,8 @@ public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new UseItemWithSwitchItemGoal<>(this,
+                TofuItems.SOYMILK_SAKURA.get().getDefaultInstance(), ModSounds.ANKONIAN_AMBIENT.get(), p_352831_ -> p_352831_.getTarget() != null));
         this.goalSelector.addGoal(4, new RangedBowAttackGoal<>(this, 1.0F, 30, 9));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, AbstractAnkonian.class)).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
@@ -99,7 +101,7 @@ public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.3F).add(Attributes.FOLLOW_RANGE, (double) 18.0F).add(Attributes.MAX_HEALTH, (double) 26.0F).add(Attributes.ARMOR, 3.0F).add(Attributes.ATTACK_DAMAGE, (double) 2.0F);
+        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.3F).add(Attributes.FOLLOW_RANGE, (double) 18.0F).add(Attributes.MAX_HEALTH, (double) 32.0F).add(Attributes.ARMOR, 3.0F).add(Attributes.ATTACK_DAMAGE, (double) 2.0F);
     }
 
 
@@ -107,7 +109,6 @@ public class CrimsonHunter extends AbstractAnkonian implements RangedAttackMob {
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
         SpawnGroupData spawngroupdata = super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
-        ((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
         RandomSource randomsource = level.getRandom();
         this.populateDefaultEquipmentSlots(randomsource, difficulty);
         this.populateDefaultEquipmentEnchantments(level, randomsource, difficulty);
