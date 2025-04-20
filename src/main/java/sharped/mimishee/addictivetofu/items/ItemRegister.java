@@ -36,6 +36,8 @@ public class ItemRegister {
             () -> new ItemNameBlockItem(BlockRegister.MAGIC_BEAN.get(), new Item.Properties()));
     public static final DeferredItem<Item> REDBEAN_PASTE = ITEMS.register("redbean_paste",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).build())));
+    public static final DeferredItem<Item> TOFU_PAPER = ITEMS.register("tofu_paper",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> ZUNDA_CROSSBOW = ITEMS.register("zunda_crossbow",
             () -> new ZundaCrossbowItem(new Item.Properties().rarity(Rarity.RARE).durability(584).stacksTo(1)));
     public static final DeferredItem<Item> ANKO_BOW = ITEMS.register("anko_bow",

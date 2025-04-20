@@ -29,6 +29,7 @@ public class ItemModelsGenerator extends ItemModelProvider {
 
         basicItem(ItemRegister.ACTIVE_NULL_TOFU.get());
         basicItem(ItemRegister.REDBEAN.get());
+        basicItem(ItemRegister.TOFU_PAPER.get());
         glowCrossBowItem(ItemRegister.ZUNDA_CROSSBOW);
         bowItem(ItemRegister.ANKO_BOW);
         spawnEggItem(ItemRegister.ANKONIAN_SPAWN_EGG.asItem());
