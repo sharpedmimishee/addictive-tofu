@@ -59,7 +59,7 @@ public abstract class WorldStemMixin {
 
                 newParameterList.addAll(parameters.values());
                 newParameterList.add(new Pair<>(ModParameterPoints.REDBEAN_FOREST, biomeRegistry.getHolderOrThrow(ModBiomes.REDBEAN_FOREST)));
-
+                newParameterList.add(new Pair<>(ModParameterPoints.REDBEAN_FOREST_UP, biomeRegistry.getHolderOrThrow(ModBiomes.REDBEAN_FOREST)));
                 biomeSource.setParameters(Either.left(new Climate.ParameterList<>(newParameterList)));
                 ((ITofuRule) (Object) generatorSettings).addictive_tofu$setTofuRule(ModSurfaceRules.revampedTofuWorldLike(generatorSettings.surfaceRule()));
 

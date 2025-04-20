@@ -1,7 +1,7 @@
 {
   "parent": "block/orientable",
   "textures": {
-    "top": "addictivetofu:block/blocktofuredbean",
+    "top": "addictivetofu:block/tofu_terrain_redbean",
     "front": "addictivetofu:block/tofu_terrain_redbean_side",
     "side": "addictivetofu:block/tofu_terrain_redbean_side",
     "bottom": "tofucraft:block/tofu_terrain"
