@@ -44,7 +44,10 @@ public class ItemRegister {
             () -> new SpawnEggItem(EntityRegister.ANKONIAN.get(), 0xF6E9EF, 0xE4C7D5, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final DeferredItem<Item> CRIMSON_HUNTER_SPAWN_EGG = ITEMS.register("crimson_hunter_spawn_egg",
             () -> new SpawnEggItem(EntityRegister.CRIMSON_HUNTER.get(), 0xF6E9EF, 0x5E1C47, new Item.Properties().rarity(Rarity.UNCOMMON)));
-
+    public static final DeferredItem<Item> ZUNDA_SLIME_SPAWN_EGG = ITEMS.register("zunda_slime_spawn_egg",
+            () -> new SpawnEggItem(EntityRegister.ZUNDA_SLIME.get(), 0x54bf50, 0x6ad966, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final DeferredItem<Item> REDBEAN_SLIME_SPAWN_EGG = ITEMS.register("redbean_slime_spawn_egg",
+            () -> new SpawnEggItem(EntityRegister.REDBEAN_SLIME.get(), 0xb55e5e, 0x633535, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
     }

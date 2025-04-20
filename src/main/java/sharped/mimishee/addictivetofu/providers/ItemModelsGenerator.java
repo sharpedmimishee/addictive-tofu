@@ -33,7 +33,8 @@ public class ItemModelsGenerator extends ItemModelProvider {
         bowItem(ItemRegister.ANKO_BOW);
         spawnEggItem(ItemRegister.ANKONIAN_SPAWN_EGG.asItem());
         spawnEggItem(ItemRegister.CRIMSON_HUNTER_SPAWN_EGG.asItem());
-
+        spawnEggItem(ItemRegister.ZUNDA_SLIME_SPAWN_EGG.asItem());
+        spawnEggItem(ItemRegister.REDBEAN_SLIME_SPAWN_EGG.asItem());
     }
 
     private ItemModelBuilder buildItem(String name, String parent, int emissivity, ResourceLocation... layers) {

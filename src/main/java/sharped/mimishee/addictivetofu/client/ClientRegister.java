@@ -18,6 +18,8 @@ import sharped.mimishee.addictivetofu.client.model.AnkonianModel;
 import sharped.mimishee.addictivetofu.client.model.CrimsonHunterModel;
 import sharped.mimishee.addictivetofu.client.render.AnkonianRender;
 import sharped.mimishee.addictivetofu.client.render.CrimsonHunterRender;
+import sharped.mimishee.addictivetofu.client.render.RedBeanSlimeRender;
+import sharped.mimishee.addictivetofu.client.render.ZundaSlimeRender;
 import sharped.mimishee.addictivetofu.entity.EntityRegister;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 import sharped.mimishee.addictivetofu.items.ZundaCrossbowItem;
@@ -88,11 +90,14 @@ public class ClientRegister {
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(EntityRegister.ANKONIAN.get(), AnkonianRender::new);
         event.registerEntityRenderer(EntityRegister.CRIMSON_HUNTER.get(), CrimsonHunterRender::new);
+        event.registerEntityRenderer(EntityRegister.ZUNDA_SLIME.get(), ZundaSlimeRender::new);
+        event.registerEntityRenderer(EntityRegister.REDBEAN_SLIME.get(), RedBeanSlimeRender::new);
     }
 
     @SubscribeEvent
     public static void registerLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModModelLayers.ANKONIAN, AnkonianModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.CRIMSON_HUNTER, CrimsonHunterModel::createBodyLayer);
+//        event.registerLayerDefinition();
     }
 }
