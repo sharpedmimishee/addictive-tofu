@@ -1,5 +1,6 @@
 package sharped.mimishee.addictivetofu.providers;
 
+import baguchan.tofucraft.registry.TofuItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;

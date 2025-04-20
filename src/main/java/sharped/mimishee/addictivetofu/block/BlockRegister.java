@@ -28,6 +28,9 @@ public class BlockRegister {
     public static final DeferredBlock<Block> MAGIC_BEAN = register("magicbean_crop",
             () -> new MagicBeanCropBlock(BlockBehaviour.Properties.of().noCollission()));
 
+    public static final DeferredBlock<Block> COMPOUNDING_CAULDRON = register("compounding_cauldron",
+            () -> new CompoundingCauldron(BlockBehaviour.Properties.of().noOcclusion()));
+
     private static <T extends Block> DeferredBlock<T> baseRegister(String name, Supplier<? extends T> block, Function<DeferredBlock<T>, Supplier<? extends Item>> item) {
         DeferredBlock<T> register = BLOCKS.register(name, block);
         Supplier<? extends Item> itemSupplier = item.apply(register);
