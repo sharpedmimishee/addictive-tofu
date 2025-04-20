@@ -1,11 +1,13 @@
 package sharped.mimishee.addictivetofu.block;
 
+import baguchan.tofucraft.block.TofuTerrainBlock;
 import baguchan.tofucraft.block.utils.WeightBaseBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
@@ -27,6 +29,8 @@ public class BlockRegister {
 
     public static final DeferredBlock<Block> MAGIC_BEAN = register("magicbean_crop",
             () -> new MagicBeanCropBlock(BlockBehaviour.Properties.of().noCollission()));
+    public static final DeferredBlock<Block> TOFU_TERRAIN_REDBEAN = register("tofu_terrain_redbean",
+            () -> new TofuTerrainBlock(BlockBehaviour.Properties.of().strength(0.4F, 0.5F).mapColor(MapColor.TERRACOTTA_RED).randomTicks().sound(SoundType.SNOW)));
 
     private static <T extends Block> DeferredBlock<T> baseRegister(String name, Supplier<? extends T> block, Function<DeferredBlock<T>, Supplier<? extends Item>> item) {
         DeferredBlock<T> register = BLOCKS.register(name, block);

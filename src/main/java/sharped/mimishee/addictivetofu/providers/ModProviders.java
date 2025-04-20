@@ -1,6 +1,5 @@
 package sharped.mimishee.addictivetofu.providers;
 
-import baguchan.tofucraft.data.generator.recipe.CraftingGenerator;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -22,10 +21,9 @@ public class ModProviders {
         DataGenerator generator = event.getGenerator();
         PackOutput output = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        DatapackBuiltinEntriesProvider datapackProvider = new RegistryDataGenerator(output, event.getLookupProvider());
-
+        DatapackBuiltinEntriesProvider datapackProvider = new ModRegistryDataGenerator(output, event.getLookupProvider());
         CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
-
+        generator.addProvider(event.includeServer(), datapackProvider);
         // Register the provider.
         generator.addProvider(
                 event.includeClient(),
@@ -51,7 +49,7 @@ public class ModProviders {
                 event.includeServer(),
                 new ItemTagGenerator(output, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper)
         );
-        generator.addProvider(event.includeServer(), new CraftingGenerator(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new ModRecipes(output, lookupProvider));
         generator.addProvider(
                 event.includeServer(),
                 ModLootTableProvider.create(output, lookupProvider)

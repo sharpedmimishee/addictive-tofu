@@ -37,6 +37,16 @@ public class ModParameterPoints {
     private static final Climate.Parameter farInlandContinentalness = Climate.Parameter.span(0.3F, 1.0F);
 
 
+    public static final Climate.ParameterPoint REDBEAN_FOREST = new Climate.ParameterPoint(
+            Climate.Parameter.span(temperatures[2], temperatures[3]),
+            Climate.Parameter.span(humidities[2], humidities[3]),
+            Climate.Parameter.span(midInlandContinentalness, farInlandContinentalness),
+            Climate.Parameter.span(erosions[2], erosions[4]),
+            Climate.Parameter.span(-1F, 0F),
+            FULL_RANGE,
+            0
+    );
+
     public static final Climate.ParameterPoint TEST = new Climate.ParameterPoint(
             FULL_RANGE,
             FULL_RANGE,
