@@ -8,48 +8,37 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import sharped.mimishee.addictivetofu.AddictiveTofu;
-
+import net.neoforged.neoforge.items.ItemStackHandler;
 import javax.annotation.Nullable;
 
-import static sharped.mimishee.addictivetofu.blockentity.BlockEntityRegister.COMPOUNDING_CAULDRON_ENTITY;
-
-public class CompoundingCauldronEntity extends BaseContainerBlockEntity {
-    // The container size. This can of course be any value you want.
-    public static final int SIZE = 9;
-    // Our item stack list. This is not final due to #setItems existing.
-    private NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
-
-    public CompoundingCauldronEntity(BlockPos pos, BlockState blockState) {
-        super(COMPOUNDING_CAULDRON_ENTITY.get(), pos, blockState);
+public class CompoundingCauldronEntity extends BlockEntity {
+    public CompoundingCauldronEntity( BlockPos pos, BlockState blockState) {
+        super(BlockEntityRegister.COMPOUNDING_CAULDRON_ENTITY.get(), pos, blockState);
     }
+    public final ItemStackHandler items = new ItemStackHandler(9) {
+        @Override
+        protected int getStackLimit(int slot, ItemStack stack) {
+            return 1;
+        }
 
-    @Override
-    protected Component getDefaultName() {
-        return Component.translatable("container.addictivetofu.compoudingcauldron");
-    }
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if(!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
+    };
 
-    @Override
-    public NonNullList<ItemStack> getItems() {
-        return this.items;
-    }
-
-    @Override
-    public void setItems(NonNullList<ItemStack> items) {
-        this.items = items;
-    }
-
-    public boolean addItem(ItemStack item) {
-        for (var i=0; i < 9; i++) {
-            if (this.items.get(i).isEmpty()) {
-                this.items.set(i, item);
+    public boolean addItem(ItemStack stack) {
+        for (var i=0;i < 9;i++) {
+            if (this.items.getStackInSlot(i).isEmpty()) {
+                this.items.insertItem(i, stack, false);
                 return true;
             }
         }
@@ -57,24 +46,14 @@ public class CompoundingCauldronEntity extends BaseContainerBlockEntity {
     }
 
     public Item takeItem() {
-        for (var i=0; i < 9; i++) {
-            if (this.items.get(i).getCount() >= 1) {
-                Item item = this.items.get(i).getItem();
-                this.items.set(i, ItemStack.EMPTY);
-                return item;
+        for (var i=0;i < 9;i++) {
+            ItemStack stack = this.items.getStackInSlot(i);
+            if (!stack.isEmpty()) {
+                this.items.extractItem(i, 1, false);
+                return stack.getItem();
             }
         }
-        return Items.AIR;
-    }
-
-    @Override
-    protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
-        return null;
-    }
-
-    @Override
-    public int getContainerSize() {
-        return SIZE;
+        return ItemStack.EMPTY.getItem();
     }
 
     @Nullable

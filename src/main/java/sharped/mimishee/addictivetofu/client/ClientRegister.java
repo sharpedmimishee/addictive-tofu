@@ -14,6 +14,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
+import sharped.mimishee.addictivetofu.blockentity.BlockEntityRegister;
+import sharped.mimishee.addictivetofu.blockentity.renderer.CompoundingCauldronRenderer;
 import sharped.mimishee.addictivetofu.client.model.AnkonianModel;
 import sharped.mimishee.addictivetofu.client.model.CrimsonHunterModel;
 import sharped.mimishee.addictivetofu.client.render.AnkonianRender;
@@ -26,6 +28,13 @@ import sharped.mimishee.addictivetofu.items.ZundaCrossbowItem;
 
 @EventBusSubscriber(modid = AddictiveTofu.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class ClientRegister {
+    @SubscribeEvent
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(BlockEntityRegister.COMPOUNDING_CAULDRON_ENTITY.get(),
+                // Pass the context to an empty (default) constructor call
+                context -> new CompoundingCauldronRenderer()
+        );
+    }
     @SubscribeEvent
     public static void modelBake(ModelEvent.ModifyBakingResult event) {
         ItemProperties.register(

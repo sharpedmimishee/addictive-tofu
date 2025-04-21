@@ -22,6 +22,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
+import sharped.mimishee.addictivetofu.blockentity.BlockEntityRegister;
 import sharped.mimishee.addictivetofu.blockentity.CompoundingCauldronEntity;
 
 public class CompoundingCauldron extends BaseEntityBlock {
@@ -69,4 +70,6 @@ public class CompoundingCauldron extends BaseEntityBlock {
         }
         return ItemInteractionResult.SUCCESS;
     }
+
+
 }
