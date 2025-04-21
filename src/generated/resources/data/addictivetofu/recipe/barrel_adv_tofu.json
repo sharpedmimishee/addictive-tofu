@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "B": {
+      "item": "minecraft:barrel"
+    },
+    "G": {
+      "item": "tofucraft:adv_tofugem"
+    },
+    "T": {
+      "item": "tofucraft:tofumetal"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "TTT",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "addictivetofu:barrel_adv_tofu"
+  }
+}

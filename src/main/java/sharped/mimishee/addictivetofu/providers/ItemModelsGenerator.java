@@ -26,6 +26,7 @@ public class ItemModelsGenerator extends ItemModelProvider {
         tfSwordItem(ItemRegister.TF_SWORD);
         simpleBlockItem(BlockRegister.ADV_TOFU_BARREL.get());
         simpleBlockItem(BlockRegister.ADV_TOFU_BLOCK.get());
+        simpleBlockItem(BlockRegister.TOFU_TERRAIN_REDBEAN.get());
 
         basicItem(ItemRegister.ACTIVE_NULL_TOFU.get());
         basicItem(ItemRegister.REDBEAN.get());

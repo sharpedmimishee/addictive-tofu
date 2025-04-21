@@ -1,6 +1,7 @@
 package sharped.mimishee.addictivetofu.providers;
 
 import baguchan.tofucraft.block.utils.WeightBaseBlock;
+import baguchan.tofucraft.registry.TofuBlocks;
 import baguchan.tofucraft.registry.TofuItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -56,6 +57,8 @@ public class BlockLootTables extends BlockLootSubProvider {
 
         this.add(BlockRegister.REDBEAN_CROP.get(), this.createCropDrops(BlockRegister.REDBEAN_CROP.get(),
                 ItemRegister.REDBEAN.get(), ItemRegister.REDBEAN.get(), lootItemConditionBuilder));
+
+        this.otherWhenSilkTouch(BlockRegister.TOFU_TERRAIN_REDBEAN.get(), TofuBlocks.TOFU_TERRAIN.get());
     }
 
     @Override
