@@ -133,6 +133,7 @@ dependencies {
     runtimeOnly "curse.maven:emi-loot-681783:6155842"
     runtimeOnly "curse.maven:fzzy-config-1005914:6405153"
     runtimeOnly "curse.maven:kotlin-for-forge-351264:5978393"
+    runtimeOnly "curse.maven:mob-battle-mod-268746:5780368"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

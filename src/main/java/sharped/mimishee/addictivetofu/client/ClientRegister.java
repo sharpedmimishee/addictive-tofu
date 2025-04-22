@@ -32,7 +32,7 @@ public class ClientRegister {
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(BlockEntityRegister.COMPOUNDING_CAULDRON_ENTITY.get(),
                 // Pass the context to an empty (default) constructor call
-                context -> new CompoundingCauldronRenderer()
+                CompoundingCauldronRenderer::new
         );
     }
     @SubscribeEvent

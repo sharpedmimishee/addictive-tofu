@@ -18,6 +18,6 @@ public class CreativeModeTabRegister {
         output.acceptAll(Stream.of(ItemRegister.REDBEAN, ItemRegister.REDBEAN_PASTE, ItemRegister.MAGIC_BEAN, ItemRegister.ANKO_BOW
                 , ItemRegister.ANKONIAN_SPAWN_EGG, ItemRegister.CRIMSON_HUNTER_SPAWN_EGG, ItemRegister.REDBEAN_SLIME_SPAWN_EGG, ItemRegister.ZUNDA_SLIME_SPAWN_EGG
                 , ItemRegister.ZUNDA_CROSSBOW, ItemRegister.TF_SWORD, ItemRegister.ADV_TOFU, ItemRegister.NULL_TOFU, ItemRegister.ACTIVE_NULL_TOFU).map((sup) -> sup.get().asItem().getDefaultInstance()).toList());
-        output.acceptAll(Stream.of(BlockRegister.ADV_TOFU_BARREL, BlockRegister.ADV_TOFU_BLOCK, BlockRegister.TOFU_TERRAIN_REDBEAN).map((sup) -> sup.get().asItem().getDefaultInstance()).toList());
+        output.acceptAll(Stream.of(BlockRegister.ADV_TOFU_BARREL, BlockRegister.ADV_TOFU_BLOCK, BlockRegister.COMPOUNDING_CAULDRON, BlockRegister.TOFU_TERRAIN_REDBEAN).map((sup) -> sup.get().asItem().getDefaultInstance()).toList());
     }).build());
 }
