@@ -1,6 +1,5 @@
 package sharped.mimishee.addictivetofu.providers;
 
-import baguchan.tofucraft.TofuCraftReload;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Holder;
@@ -36,15 +35,15 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ModStructures {
-    public static final ResourceKey<Structure> TOFU_MANSION = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(TofuCraftReload.MODID, "tofu_mansion"));
+    public static final ResourceKey<Structure> TOFU_MANSION = ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "tofu_mansion"));
 
-    public static final ResourceKey<StructureSet> TOFU_MANSION_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(TofuCraftReload.MODID, "tofu_mansion"));
+    public static final ResourceKey<StructureSet> TOFU_MANSION_SET = ResourceKey.create(Registries.STRUCTURE_SET, ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "tofu_mansion"));
 
-    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_CORE = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(TofuCraftReload.MODID, "tofu_mansion/core"));
-    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_FLOOR_1 = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(TofuCraftReload.MODID, "tofu_mansion/floor_1/14x14"));
-    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_ANKONIAN = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(TofuCraftReload.MODID, "tofu_mansion/mob/ankonian"));
-    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_CRIMSON_HUNTER = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(TofuCraftReload.MODID, "tofu_mansion/mob/crimson_hunter"));
-    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_TOFUNIAN = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(TofuCraftReload.MODID, "tofu_mansion/mob/tofunian"));
+    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_CORE = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "tofu_mansion/core"));
+    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_FLOOR_1 = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "tofu_mansion/floor_1/14x14"));
+    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_ANKONIAN = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "tofu_mansion/mob/ankonian"));
+    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_CRIMSON_HUNTER = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "tofu_mansion/mob/crimson_hunter"));
+    public static final ResourceKey<StructureTemplatePool> TOFU_MANSION_TOFUNIAN = ResourceKey.create(Registries.TEMPLATE_POOL, ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, "tofu_mansion/mob/tofunian"));
 
 
     public static void bootstrapStructures(BootstrapContext<Structure> context) {

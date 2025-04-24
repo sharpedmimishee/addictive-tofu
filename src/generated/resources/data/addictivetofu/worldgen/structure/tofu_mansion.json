@@ -41,7 +41,7 @@
   "start_height": {
     "absolute": 0
   },
-  "start_pool": "tofucraft:tofu_mansion/core",
+  "start_pool": "addictivetofu:tofu_mansion/core",
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
   "use_expansion_hack": false
