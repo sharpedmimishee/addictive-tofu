@@ -22,8 +22,9 @@ public class ModProviders {
         PackOutput output = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         DatapackBuiltinEntriesProvider datapackProvider = new ModRegistryDataGenerator(output, event.getLookupProvider());
-        CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
         generator.addProvider(event.includeServer(), datapackProvider);
+
+        CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
         // Register the provider.
         generator.addProvider(
                 event.includeClient(),
@@ -48,6 +49,10 @@ public class ModProviders {
         generator.addProvider(
                 event.includeServer(),
                 new ItemTagGenerator(output, lookupProvider, blockTagGenerator.contentsGetter(), existingFileHelper)
+        );
+        generator.addProvider(
+                event.includeServer(),
+                new BiomeTagGenerator(output, lookupProvider, existingFileHelper)
         );
         generator.addProvider(event.includeServer(), new ModRecipes(output, lookupProvider));
         generator.addProvider(

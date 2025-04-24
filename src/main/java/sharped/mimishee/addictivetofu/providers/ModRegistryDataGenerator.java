@@ -1,5 +1,6 @@
 package sharped.mimishee.addictivetofu.providers;
 
+import baguchan.tofucraft.TofuCraftReload;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -23,20 +24,16 @@ public class ModRegistryDataGenerator extends DatapackBuiltinEntriesProvider {
             })
             .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, ModTofuWorldPlacements::bootstrap)
-            .add(Registries.PROCESSOR_LIST, (context) -> {
-            })
-            .add(Registries.STRUCTURE, (context) -> {
-            })
-            .add(Registries.STRUCTURE_SET, (context) -> {
-            })
-            .add(Registries.TEMPLATE_POOL, (context) -> {
-            })
+            .add(Registries.PROCESSOR_LIST, ModStructures::bootstrapProcessors)
+            .add(Registries.STRUCTURE, ModStructures::bootstrapStructures)
+            .add(Registries.STRUCTURE_SET, ModStructures::bootstrapSets)
+            .add(Registries.TEMPLATE_POOL, ModStructures::bootstrapPools)
             .add(Registries.CONFIGURED_CARVER, ModConfiguredWorldCarvers::bootstrap)
             .add(Registries.BIOME, ModBiomes::bootstrap);
 
 
     public ModRegistryDataGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of("minecraft", AddictiveTofu.MODID));
+        super(output, registries, BUILDER, Set.of("minecraft", TofuCraftReload.MODID, AddictiveTofu.MODID));
     }
 
 }
