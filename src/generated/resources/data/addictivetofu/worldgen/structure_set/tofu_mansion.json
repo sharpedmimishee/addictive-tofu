@@ -1,9 +1,13 @@
 {
   "placement": {
     "type": "minecraft:random_spread",
-    "salt": 16324620,
+    "exclusion_zone": {
+      "chunk_count": 5,
+      "other_set": "tofucraft:tofu_castle"
+    },
+    "salt": 18431620,
     "separation": 6,
-    "spacing": 34
+    "spacing": 32
   },
   "structures": [
     {

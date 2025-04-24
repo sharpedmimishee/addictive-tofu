@@ -1,9 +1,11 @@
 package sharped.mimishee.addictivetofu.providers;
 
+import baguchan.tofucraft.registry.TofuStructures;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Pools;
@@ -22,6 +24,7 @@ import net.minecraft.world.level.levelgen.structure.StructureSpawnOverride;
 import net.minecraft.world.level.levelgen.structure.TerrainAdjustment;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadStructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.RandomSpreadType;
+import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
@@ -82,7 +85,11 @@ public class ModStructures {
 
     public static void bootstrapSets(BootstrapContext<StructureSet> context) {
         HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
-        context.register(TOFU_MANSION_SET, new StructureSet(structures.getOrThrow(TOFU_MANSION), new RandomSpreadStructurePlacement(34, 6, RandomSpreadType.LINEAR, 16324620)));
+        HolderGetter<StructureSet> structureSets = context.lookup(Registries.STRUCTURE_SET);
+        context.register(TOFU_MANSION_SET, new StructureSet(structures.getOrThrow(TOFU_MANSION), new RandomSpreadStructurePlacement(Vec3i.ZERO,
+                StructurePlacement.FrequencyReductionMethod.DEFAULT,
+                1F, 18431620, Optional.of(new StructurePlacement.ExclusionZone(structureSets.getOrThrow(TofuStructures.TOFU_CASTLE_SET), 5)),
+                32, 6, RandomSpreadType.LINEAR)));
     }
 
     public static void bootstrapPools(BootstrapContext<StructureTemplatePool> context) {
