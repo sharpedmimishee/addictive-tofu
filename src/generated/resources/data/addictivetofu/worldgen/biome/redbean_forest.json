@@ -1,9 +1,9 @@
 {
   "carvers": {
     "air": [
-      "addictivetofu:tofu_cave",
-      "addictivetofu:tofu_cave_extra_underground",
-      "addictivetofu:tofu_canyon"
+      "tofucraft:tofu_cave",
+      "tofucraft:tofu_cave_extra_underground",
+      "tofucraft:tofu_canyon"
     ]
   },
   "downfall": 0.6,
@@ -29,11 +29,11 @@
     [],
     [],
     [
-      "addictivetofu:ore_tofu_diamond",
-      "addictivetofu:ore_tofu_diamond_buried",
-      "addictivetofu:ore_tofu_diamond_large",
-      "addictivetofu:ore_tofugem",
-      "addictivetofu:ore_tofugem_large"
+      "tofucraft:ore_tofu_diamond",
+      "tofucraft:ore_tofu_diamond_buried",
+      "tofucraft:ore_tofu_diamond_large",
+      "tofucraft:ore_tofugem",
+      "tofucraft:ore_tofugem_large"
     ]
   ],
   "has_precipitation": true,
