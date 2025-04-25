@@ -8,6 +8,7 @@ import sharped.mimishee.addictivetofu.AddictiveTofu;
 
 public class BuiltInModLootTables {
     public static final ResourceKey<LootTable> TOFU_MANSION_SMITHING_ROOM = register("tofu_mansion/smithing_room");
+    public static final ResourceKey<LootTable> TOFU_MANSION_LIBRARY = register("tofu_mansion/library");
 
     private static ResourceKey<LootTable> register(String name) {
         return ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(AddictiveTofu.MODID, name));

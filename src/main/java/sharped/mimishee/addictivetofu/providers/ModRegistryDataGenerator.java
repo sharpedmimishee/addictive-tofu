@@ -29,7 +29,9 @@ public class ModRegistryDataGenerator extends DatapackBuiltinEntriesProvider {
             .add(Registries.STRUCTURE_SET, ModStructures::bootstrapSets)
             .add(Registries.TEMPLATE_POOL, ModStructures::bootstrapPools)
             .add(Registries.CONFIGURED_CARVER, ModConfiguredWorldCarvers::bootstrap)
-            .add(Registries.BIOME, ModBiomes::bootstrap);
+            .add(Registries.BIOME, ModBiomes::bootstrap)
+            .add(Registries.ENCHANTMENT, (context) -> {
+            });
 
 
     public ModRegistryDataGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
