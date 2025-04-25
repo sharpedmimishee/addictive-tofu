@@ -22,8 +22,8 @@ public class ModBiomeBuilders {
     }
 
     public static Biome makeDefaultBiome(BiomeGenerationSettings.Builder builder, MobSpawnSettings.Builder mobSpawnSetting, Holder<SoundEvent> soundEvent) {
-        ModBiomeDefaultFeatures.addDefaultCarvers(builder);
-        ModBiomeDefaultFeatures.addDefaultOres(builder);
+        TofuBiomeDefaultFeatures.addDefaultCarvers(builder);
+        TofuBiomeDefaultFeatures.addDefaultOres(builder);
         TofuBiomeDefaultFeatures.tofuCreatureSpawns(mobSpawnSetting);
         return fullDefinition(Biome.Precipitation.NONE, 0.8F, 0.6F, (new BiomeSpecialEffects.Builder()).fogColor(9671612).skyColor(16777215).waterColor(12311280).waterFogColor(6330816).grassColorOverride(7115607).foliageColorOverride(7115607).grassColorModifier(BiomeSpecialEffects.GrassColorModifier.NONE).backgroundMusic(new Music(soundEvent, 12000, 24000, false)).build(), mobSpawnSetting.build(), builder.build(), Biome.TemperatureModifier.NONE);
     }
