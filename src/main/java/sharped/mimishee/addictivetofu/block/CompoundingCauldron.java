@@ -1,5 +1,6 @@
 package sharped.mimishee.addictivetofu.block;
 
+import baguchan.tofucraft.registry.TofuItems;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -10,6 +11,7 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -17,15 +19,24 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.fluids.FluidUtil;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
+import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
 import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
 import sharped.mimishee.addictivetofu.blockentity.BlockEntityRegister;
 import sharped.mimishee.addictivetofu.blockentity.CompoundingCauldronEntity;
 
 public class CompoundingCauldron extends BaseEntityBlock {
+    private static final Logger log = LoggerFactory.getLogger(CompoundingCauldron.class);
+
     public CompoundingCauldron(Properties properties) {
         super(properties);
     }
@@ -53,18 +64,48 @@ public class CompoundingCauldron extends BaseEntityBlock {
     }
 
     @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if(level.getBlockEntity(pos) instanceof CompoundingCauldronEntity compoundingCauldronEntity) {
+            compoundingCauldronEntity.dropAll();
+            level.updateNeighbourForOutputSignal(pos, this);
+        }
+        super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
+
+    @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(level.getBlockEntity(pos) instanceof CompoundingCauldronEntity compoundingCauldronEntity) {
             if (player.getMainHandItem().isEmpty() && player.isCrouching()) {
                 player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(compoundingCauldronEntity.takeItem(), 1));
                 level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
             } else {
-                Item item = stack.getItem();
-                ItemStack itemStack = new ItemStack(item, 1);
-                boolean result = compoundingCauldronEntity.addItem(itemStack);
-                if (result) {
-                    stack.shrink(1);
-                    level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
+                IFluidHandlerItem handler = FluidUtil.getFluidHandler(stack.copyWithCount(1)).orElse(null);
+                if (player.getMainHandItem().getItem() == TofuItems.TOFUSTICK.get()) {
+//                    AddictiveTofu.LOGGER.info("you'd just used TofuStick on the block!");
+                    if (compoundingCauldronEntity.hasRecipe()) {
+//                        AddictiveTofu.LOGGER.info("hasRecipe!");
+                        compoundingCauldronEntity.craftItem();
+                    }
+                }else if (player.getMainHandItem().getItem() == TofuItems.TOFU_DIAMOND_AXE.get()){
+                    compoundingCauldronEntity.craftItem();
+                } else if (handler instanceof FluidBucketWrapper) {
+                    if (compoundingCauldronEntity.addFluid(((FluidBucketWrapper) handler).getFluid())) {
+                        level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1f, 1f);
+                        player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(Items.BUCKET, 1));
+                    } else if (player.getMainHandItem().getItem() == Items.BUCKET) {
+                        Fluid fluid = compoundingCauldronEntity.takeFluid();
+                        level.playSound(player, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1f, 1f);
+                        player.setItemInHand(InteractionHand.MAIN_HAND, fluid.getBucket().getDefaultInstance());
+                    }
+                } else {
+                    Item item = stack.getItem();
+                    ItemStack itemStack = new ItemStack(item, 1);
+                    boolean result = compoundingCauldronEntity.addItem(itemStack);
+                    if (result) {
+                        stack.shrink(1);
+                        level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
+                    }
                 }
             }
         }
