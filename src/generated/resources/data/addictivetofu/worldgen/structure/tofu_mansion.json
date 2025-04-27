@@ -1,9 +1,6 @@
 {
-  "type": "minecraft:jigsaw",
+  "type": "addictivetofu:tofu_mansions",
   "biomes": "#addictivetofu:has_structure/tofu_mansion",
-  "max_distance_from_center": 80,
-  "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "size": 6,
   "spawn_overrides": {
     "ambient": {
       "bounding_box": "full",
@@ -38,11 +35,5 @@
       "spawns": []
     }
   },
-  "start_height": {
-    "absolute": 0
-  },
-  "start_pool": "addictivetofu:tofu_mansion/core",
-  "step": "surface_structures",
-  "terrain_adaptation": "beard_thin",
-  "use_expansion_hack": false
+  "step": "surface_structures"
 }

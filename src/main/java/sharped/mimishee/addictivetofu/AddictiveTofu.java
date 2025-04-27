@@ -18,6 +18,8 @@ import sharped.mimishee.addictivetofu.entity.EntityRegister;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 import sharped.mimishee.addictivetofu.register.CreativeModeTabRegister;
 import sharped.mimishee.addictivetofu.register.ModSounds;
+import sharped.mimishee.addictivetofu.register.ModStructureTypes;
+import sharped.mimishee.addictivetofu.register.TofuStructurePieceType;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(AddictiveTofu.MODID)
@@ -37,6 +39,9 @@ public class AddictiveTofu
         CreativeModeTabRegister.CREATIVE_MODE_TABS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
         EntityRegister.ENTITIES.register(modEventBus);
+
+        ModStructureTypes.STRUCTURE_TYPE.register(modEventBus);
+        TofuStructurePieceType.STRUCTURE_PIECE_TYPE.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (AddictiveTofu) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
@@ -53,7 +58,6 @@ public class AddictiveTofu
     {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
-
 //        if (Config.logDirtBlock)
 //            LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
 
