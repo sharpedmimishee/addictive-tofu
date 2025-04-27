@@ -164,7 +164,11 @@
           "name": "tofucraft:tofu_diamond_helmet"
         }
       ],
-      "rolls": 10.0
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 10.0,
+        "min": 4.0
+      }
     }
   ],
   "random_sequence": "addictivetofu:tofu_mansion/smithing_room"

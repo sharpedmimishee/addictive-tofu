@@ -65,7 +65,7 @@ public class TofuMansionPieces {
 
         @Override
         public String get1x2SideEntrance(RandomSource p_229997_, boolean p_229998_) {
-            return "1x2_a" + (p_229997_.nextInt(9) + 1);
+            return "1x2_a" + (p_229997_.nextInt(11) + 1);
         }
 
         @Override
@@ -131,10 +131,10 @@ public class TofuMansionPieces {
 
         public MansionGrid(RandomSource random) {
             this.random = random;
-            int i = 11;
+            int i = 16;
             this.entranceX = 7;
             this.entranceY = 4;
-            this.baseGrid = new TofuMansionPieces.SimpleGrid(13, 13, 5);
+            this.baseGrid = new TofuMansionPieces.SimpleGrid(16, 16, 5);
             this.baseGrid.set(this.entranceX, this.entranceY, this.entranceX + 1, this.entranceY + 1, 3);
             this.baseGrid.set(this.entranceX - 1, this.entranceY, this.entranceX - 1, this.entranceY + 1, 2);
             this.baseGrid.set(this.entranceX + 2, this.entranceY - 2, this.entranceX + 3, this.entranceY + 3, 5);
@@ -142,8 +142,8 @@ public class TofuMansionPieces {
             this.baseGrid.set(this.entranceX + 1, this.entranceY + 2, this.entranceX + 1, this.entranceY + 3, 1);
             this.baseGrid.set(this.entranceX - 1, this.entranceY - 1, 1);
             this.baseGrid.set(this.entranceX - 1, this.entranceY + 2, 1);
-            this.baseGrid.set(0, 0, 11, 1, 5);
-            this.baseGrid.set(0, 9, 11, 11, 5);
+            this.baseGrid.set(0, 0, 16, 1, 5);
+            this.baseGrid.set(0, 9, 16, 16, 5);
             this.recursiveCorridor(this.baseGrid, this.entranceX, this.entranceY - 2, Direction.WEST, 6);
             this.recursiveCorridor(this.baseGrid, this.entranceX, this.entranceY + 3, Direction.WEST, 6);
             this.recursiveCorridor(this.baseGrid, this.entranceX - 2, this.entranceY - 1, Direction.WEST, 3);
@@ -153,9 +153,9 @@ public class TofuMansionPieces {
             }
 
             this.floorRooms = new TofuMansionPieces.SimpleGrid[3];
-            this.floorRooms[0] = new TofuMansionPieces.SimpleGrid(11, 11, 5);
-            this.floorRooms[1] = new TofuMansionPieces.SimpleGrid(11, 11, 5);
-            this.floorRooms[2] = new TofuMansionPieces.SimpleGrid(11, 11, 5);
+            this.floorRooms[0] = new TofuMansionPieces.SimpleGrid(16, 16, 5);
+            this.floorRooms[1] = new TofuMansionPieces.SimpleGrid(16, 16, 5);
+            this.floorRooms[2] = new TofuMansionPieces.SimpleGrid(16, 16, 5);
             this.identifyRooms(this.baseGrid, this.floorRooms[0]);
             this.identifyRooms(this.baseGrid, this.floorRooms[1]);
             this.floorRooms[0].set(this.entranceX + 1, this.entranceY, this.entranceX + 1, this.entranceY + 1, 8388608);
@@ -1325,7 +1325,7 @@ public class TofuMansionPieces {
                     blockstate = blockstate.setValue(ChestBlock.FACING, rotation.rotate(Direction.NORTH));
                 }
 
-                this.createChest(level, box, random, pos, BuiltInModLootTables.TOFU_MANSION_SMITHING_ROOM, blockstate);
+                this.createChest(level, box, random, pos, BuiltInModLootTables.TOFU_MANSION_MISC_ITEM, blockstate);
             } else {
                 List<Mob> list = new ArrayList<>();
                 switch (name) {

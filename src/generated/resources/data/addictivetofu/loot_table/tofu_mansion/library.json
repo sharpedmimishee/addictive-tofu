@@ -62,7 +62,11 @@
           "weight": 2
         }
       ],
-      "rolls": 6.0
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 6.0,
+        "min": 4.0
+      }
     }
   ],
   "random_sequence": "addictivetofu:tofu_mansion/library"
