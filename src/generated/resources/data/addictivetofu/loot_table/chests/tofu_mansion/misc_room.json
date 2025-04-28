@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "addictivetofu:chests/tofu_mansion/food_room"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "addictivetofu:chests/tofu_mansion/smithing_room"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "addictivetofu:chests/ofu_mansion/library"
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 5
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 2.0,
+        "min": 1.0
+      }
+    }
+  ],
+  "random_sequence": "addictivetofu:chests/tofu_mansion/misc_room"
+}

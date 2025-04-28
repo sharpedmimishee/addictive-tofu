@@ -126,7 +126,7 @@ repositories {
 }
 dependencies {
     implementation "maven.modrinth:bagus-lib:1.21.1-13.8.2"
-    implementation "maven.modrinth:tofucraftreload:1.21.1-12.7.1.0"
+    implementation "maven.modrinth:tofucraftreload:1.21.1-12.8.0.0"
     runtimeOnly "maven.modrinth:jade:15.10.0+neoforge"
     runtimeOnly "curse.maven:tmrv-1194921:6269681"
     runtimeOnly "curse.maven:emi-580555:6420931"

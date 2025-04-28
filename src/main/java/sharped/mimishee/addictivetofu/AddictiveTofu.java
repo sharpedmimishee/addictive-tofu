@@ -20,6 +20,8 @@ import sharped.mimishee.addictivetofu.items.ItemRegister;
 import sharped.mimishee.addictivetofu.recipe.RecipeRegister;
 import sharped.mimishee.addictivetofu.register.CreativeModeTabRegister;
 import sharped.mimishee.addictivetofu.register.ModSounds;
+import sharped.mimishee.addictivetofu.register.ModStructureTypes;
+import sharped.mimishee.addictivetofu.register.TofuStructurePieceType;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(AddictiveTofu.MODID)
@@ -39,6 +41,9 @@ public class AddictiveTofu
         CreativeModeTabRegister.CREATIVE_MODE_TABS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
         EntityRegister.ENTITIES.register(modEventBus);
+
+        ModStructureTypes.STRUCTURE_TYPE.register(modEventBus);
+        TofuStructurePieceType.STRUCTURE_PIECE_TYPE.register(modEventBus);
         BlockEntityRegister.register(modEventBus);
         RecipeRegister.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
