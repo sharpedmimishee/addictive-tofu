@@ -6,15 +6,15 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "value": "addictivetofu:tofu_mansion/food_room"
+          "value": "addictivetofu:chests/tofu_mansion/food_room"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "addictivetofu:tofu_mansion/smithing_room"
+          "value": "addictivetofu:chests/tofu_mansion/smithing_room"
         },
         {
           "type": "minecraft:loot_table",
-          "value": "addictivetofu:tofu_mansion/library"
+          "value": "addictivetofu:chests/ofu_mansion/library"
         },
         {
           "type": "minecraft:empty",
@@ -28,5 +28,5 @@
       }
     }
   ],
-  "random_sequence": "addictivetofu:tofu_mansion/misc_room"
+  "random_sequence": "addictivetofu:chests/tofu_mansion/misc_room"
 }

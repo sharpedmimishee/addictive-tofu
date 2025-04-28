@@ -24,48 +24,41 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "minecraft:golden_apple"
+          "name": "tofucraft:tofu_metal_axe",
+          "weight": 5
         },
         {
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
+              "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "addictivetofu:redbean_paste",
+          "name": "tofucraft:tofu_metal_helmet",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "name": "addictivetofu:anko_bow",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tofucraft:blocktofudiamond",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tofucraft:blocktofumetal",
           "weight": 20
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "tofucraft:tofuishi",
-          "weight": 20
+          "name": "minecraft:air",
+          "weight": 15
         },
         {
           "type": "minecraft:item",
@@ -80,16 +73,32 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "tofucraft:tofukinu",
-          "weight": 30
+          "name": "minecraft:golden_apple",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "tofucraft:tofu_upgrade_smithing_template",
+          "weight": 3
         }
       ],
       "rolls": {
         "type": "minecraft:uniform",
         "max": 10.0,
-        "min": 4.0
+        "min": 8.0
       }
     }
   ],
-  "random_sequence": "addictivetofu:tofu_mansion/food_room"
+  "random_sequence": "addictivetofu:chests/tofu_mansion/main_chest"
 }
