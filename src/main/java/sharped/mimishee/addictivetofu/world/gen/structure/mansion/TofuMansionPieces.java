@@ -82,7 +82,7 @@ public class TofuMansionPieces {
 
         @Override
         public String get2x2(RandomSource p_230007_) {
-            return "2x2_a" + (p_230007_.nextInt(4) + 1);
+            return "2x2_a" + (p_230007_.nextInt(5) + 1);
         }
 
         @Override
