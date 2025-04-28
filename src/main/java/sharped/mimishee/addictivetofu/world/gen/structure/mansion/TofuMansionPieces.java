@@ -1,5 +1,7 @@
 package sharped.mimishee.addictivetofu.world.gen.structure.mansion;
 
+import baguchan.tofucraft.block.utils.TofuChestBlock;
+import baguchan.tofucraft.blockentity.TofuChestBlockEntity;
 import baguchan.tofucraft.registry.TofuBlocks;
 import baguchan.tofucraft.registry.TofuEntityTypes;
 import com.google.common.collect.Lists;
@@ -12,11 +14,11 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Tuple;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -1184,7 +1186,7 @@ public class TofuMansionPieces {
     static class SecondFloorRoomCollection extends TofuMansionPieces.FloorRoomCollection {
         @Override
         public String get1x1(RandomSource p_230144_) {
-            return "1x1_b" + (p_230144_.nextInt(4) + 1);
+            return "1x1_b" + (p_230144_.nextInt(5) + 1);
         }
 
         @Override
@@ -1314,18 +1316,18 @@ public class TofuMansionPieces {
         protected void handleDataMarker(String name, BlockPos pos, ServerLevelAccessor level, RandomSource random, BoundingBox box) {
             if (name.startsWith("Chest")) {
                 Rotation rotation = this.placeSettings.getRotation();
-                BlockState blockstate = Blocks.CHEST.defaultBlockState();
+                BlockState blockstate = TofuBlocks.TOFUCHEST.get().defaultBlockState();
                 if ("ChestWest".equals(name)) {
-                    blockstate = blockstate.setValue(ChestBlock.FACING, rotation.rotate(Direction.WEST));
+                    blockstate = blockstate.setValue(TofuChestBlock.FACING, rotation.rotate(Direction.WEST));
                 } else if ("ChestEast".equals(name)) {
-                    blockstate = blockstate.setValue(ChestBlock.FACING, rotation.rotate(Direction.EAST));
+                    blockstate = blockstate.setValue(TofuChestBlock.FACING, rotation.rotate(Direction.EAST));
                 } else if ("ChestSouth".equals(name)) {
-                    blockstate = blockstate.setValue(ChestBlock.FACING, rotation.rotate(Direction.SOUTH));
+                    blockstate = blockstate.setValue(TofuChestBlock.FACING, rotation.rotate(Direction.SOUTH));
                 } else if ("ChestNorth".equals(name)) {
-                    blockstate = blockstate.setValue(ChestBlock.FACING, rotation.rotate(Direction.NORTH));
+                    blockstate = blockstate.setValue(TofuChestBlock.FACING, rotation.rotate(Direction.NORTH));
                 }
 
-                this.createChest(level, box, random, pos, BuiltInModLootTables.TOFU_MANSION_MISC_ITEM, blockstate);
+                this.createChest(level, box, random, pos, BuiltInModLootTables.TOFU_MANSION_CHEST_ITEM, blockstate);
             } else {
                 List<Mob> list = new ArrayList<>();
                 switch (name) {
@@ -1337,6 +1339,10 @@ public class TofuMansionPieces {
                         break;
                     case "Tofunian":
                         list.add(TofuEntityTypes.TOFUNIAN.get().create(level.getLevel()));
+
+                        break;
+                    case "Chicken":
+                        list.add(EntityType.CHICKEN.create(level.getLevel()));
 
                         break;
                     default:
@@ -1370,7 +1376,7 @@ public class TofuMansionPieces {
 
                 level.setBlock(pos, state, 2);
                 BlockEntity blockentity = level.getBlockEntity(pos);
-                if (blockentity instanceof ChestBlockEntity) {
+                if (blockentity instanceof TofuChestBlockEntity) {
                     ((ChestBlockEntity) blockentity).setLootTable(lootTable, random.nextLong());
                 }
 
