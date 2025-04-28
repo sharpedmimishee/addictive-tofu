@@ -42,6 +42,11 @@
         },
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:enchant_randomly"
+            }
+          ],
           "name": "addictivetofu:anko_bow",
           "weight": 10
         },
@@ -52,13 +57,19 @@
         },
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
           "name": "tofucraft:blocktofumetal",
           "weight": 20
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:air",
-          "weight": 15
         },
         {
           "type": "minecraft:item",
@@ -74,7 +85,7 @@
             }
           ],
           "name": "minecraft:golden_apple",
-          "weight": 3
+          "weight": 4
         },
         {
           "type": "minecraft:item",
@@ -90,7 +101,7 @@
             }
           ],
           "name": "tofucraft:tofu_upgrade_smithing_template",
-          "weight": 3
+          "weight": 4
         }
       ],
       "rolls": {

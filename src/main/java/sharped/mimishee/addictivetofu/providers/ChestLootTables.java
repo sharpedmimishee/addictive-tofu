@@ -51,12 +51,15 @@ public record ChestLootTables(HolderLookup.Provider registries) implements LootT
                 LootTable.lootTable()
                         .withPool(
                                 LootPool.lootPool()
-                                        .setRolls(UniformGenerator.between(4, 10.0F))
+                                        .setRolls(UniformGenerator.between(4, 6.0F))
                                         .add(LootItem.lootTableItem(ItemRegister.REDBEAN.get()).setWeight(30).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
-                                        .add(LootItem.lootTableItem(Items.GOLDEN_APPLE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
-                                        .add(LootItem.lootTableItem(ItemRegister.REDBEAN_PASTE.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                                        .add(LootItem.lootTableItem(Items.GOLDEN_APPLE).setWeight(5).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                                        .add(LootItem.lootTableItem(TofuBlocks.SOYCHEESE_TART).setWeight(5))
+                                        .add(LootItem.lootTableItem(TofuItems.TOFUCOOKIE.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                                        .add(LootItem.lootTableItem(TofuItems.TOFU_HAMBURG.get()).setWeight(15).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                                        .add(LootItem.lootTableItem(TofuItems.SOYMEAT.get()).setWeight(15).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
                                         .add(LootItem.lootTableItem(TofuItems.TOFUISHI.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
-                                        .add(LootItem.lootTableItem(TofuItems.TOFUKINU.get()).setWeight(30).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                                        .add(LootItem.lootTableItem(TofuItems.TOFUKINU.get()).setWeight(25).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
                         ));
         output.accept(
                 BuiltInModLootTables.TOFU_MANSION_LIBRARY_ITEM,
@@ -91,12 +94,11 @@ public record ChestLootTables(HolderLookup.Provider registries) implements LootT
                                         .add(LootItem.lootTableItem(ItemRegister.REDBEAN.get()).setWeight(30).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
                                         .add(LootItem.lootTableItem(TofuItems.TOFU_METAL_AXE.get()).setWeight(5).apply(EnchantRandomlyFunction.randomEnchantment()))
                                         .add(LootItem.lootTableItem(TofuItems.TOFU_METAL_HELMET.get()).setWeight(5).apply(EnchantRandomlyFunction.randomEnchantment()))
-                                        .add(LootItem.lootTableItem(ItemRegister.ANKO_BOW.get()).setWeight(10))
+                                        .add(LootItem.lootTableItem(ItemRegister.ANKO_BOW.get()).setWeight(10).apply(EnchantRandomlyFunction.randomEnchantment()))
                                         .add(LootItem.lootTableItem(TofuBlocks.DIAMONDTOFU.get()).setWeight(2))
-                                        .add(LootItem.lootTableItem(TofuBlocks.METALTOFU.get()).setWeight(20))
-                                        .add(LootItem.lootTableItem(TofuBlocks.SOYMILK.get()).setWeight(15))
-                                        .add(LootItem.lootTableItem(Items.GOLDEN_APPLE).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
-                                        .add(LootItem.lootTableItem(TofuItems.TOFU_UPGRADE_SMITHING_TEMPLATE.get()).setWeight(3).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
+                                        .add(LootItem.lootTableItem(TofuBlocks.METALTOFU.get()).setWeight(20).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                                        .add(LootItem.lootTableItem(Items.GOLDEN_APPLE).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                                        .add(LootItem.lootTableItem(TofuItems.TOFU_UPGRADE_SMITHING_TEMPLATE.get()).setWeight(4).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))
                         ));
     }
 }
