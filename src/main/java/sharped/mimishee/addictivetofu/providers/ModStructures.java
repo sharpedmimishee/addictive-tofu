@@ -68,7 +68,7 @@ public class ModStructures {
         context.register(TOFU_MANSION_SET, new StructureSet(structures.getOrThrow(TOFU_MANSION), new RandomSpreadStructurePlacement(Vec3i.ZERO,
                 StructurePlacement.FrequencyReductionMethod.DEFAULT,
                 1F, 18431620, Optional.of(new StructurePlacement.ExclusionZone(structureSets.getOrThrow(TofuStructures.TOFU_CASTLE_SET), 5)),
-                32, 6, RandomSpreadType.LINEAR)));
+                40, 10, RandomSpreadType.LINEAR)));
     }
 
     public static void bootstrapPools(BootstrapContext<StructureTemplatePool> context) {

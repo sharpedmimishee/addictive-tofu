@@ -65,7 +65,7 @@ public class Ankonian extends AbstractAnkonian {
 
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.3F).add(Attributes.FOLLOW_RANGE, (double) 12.0F).add(Attributes.MAX_HEALTH, (double) 24.0F).add(Attributes.ATTACK_DAMAGE, (double) 2.0F);
+        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, (double) 0.3F).add(Attributes.FOLLOW_RANGE, (double) 12.0F).add(Attributes.MAX_HEALTH, (double) 24.0F).add(Attributes.ATTACK_DAMAGE, (double) 3.0F);
     }
 
     @Nullable

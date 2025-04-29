@@ -133,10 +133,10 @@ public class TofuMansionPieces {
 
         public MansionGrid(RandomSource random) {
             this.random = random;
-            int i = 16;
+            int i = 24;
             this.entranceX = 7;
             this.entranceY = 4;
-            this.baseGrid = new TofuMansionPieces.SimpleGrid(16, 16, 5);
+            this.baseGrid = new TofuMansionPieces.SimpleGrid(24, 24, 5);
             this.baseGrid.set(this.entranceX, this.entranceY, this.entranceX + 1, this.entranceY + 1, 3);
             this.baseGrid.set(this.entranceX - 1, this.entranceY, this.entranceX - 1, this.entranceY + 1, 2);
             this.baseGrid.set(this.entranceX + 2, this.entranceY - 2, this.entranceX + 3, this.entranceY + 3, 5);
@@ -144,8 +144,8 @@ public class TofuMansionPieces {
             this.baseGrid.set(this.entranceX + 1, this.entranceY + 2, this.entranceX + 1, this.entranceY + 3, 1);
             this.baseGrid.set(this.entranceX - 1, this.entranceY - 1, 1);
             this.baseGrid.set(this.entranceX - 1, this.entranceY + 2, 1);
-            this.baseGrid.set(0, 0, 16, 1, 5);
-            this.baseGrid.set(0, 9, 16, 16, 5);
+            this.baseGrid.set(0, 0, 24, 1, 5);
+            this.baseGrid.set(0, 9, 24, 24, 5);
             this.recursiveCorridor(this.baseGrid, this.entranceX, this.entranceY - 2, Direction.WEST, 6);
             this.recursiveCorridor(this.baseGrid, this.entranceX, this.entranceY + 3, Direction.WEST, 6);
             this.recursiveCorridor(this.baseGrid, this.entranceX - 2, this.entranceY - 1, Direction.WEST, 3);
@@ -155,9 +155,9 @@ public class TofuMansionPieces {
             }
 
             this.floorRooms = new TofuMansionPieces.SimpleGrid[3];
-            this.floorRooms[0] = new TofuMansionPieces.SimpleGrid(16, 16, 5);
-            this.floorRooms[1] = new TofuMansionPieces.SimpleGrid(16, 16, 5);
-            this.floorRooms[2] = new TofuMansionPieces.SimpleGrid(16, 16, 5);
+            this.floorRooms[0] = new TofuMansionPieces.SimpleGrid(24, 24, 5);
+            this.floorRooms[1] = new TofuMansionPieces.SimpleGrid(24, 24, 5);
+            this.floorRooms[2] = new TofuMansionPieces.SimpleGrid(24, 24, 5);
             this.identifyRooms(this.baseGrid, this.floorRooms[0]);
             this.identifyRooms(this.baseGrid, this.floorRooms[1]);
             this.floorRooms[0].set(this.entranceX + 1, this.entranceY, this.entranceX + 1, this.entranceY + 1, 8388608);
@@ -325,7 +325,7 @@ public class TofuMansionPieces {
             }
 
             Util.shuffle(objectarraylist, this.random);
-            int k3 = 10;
+            int k3 = 23;
 
             for (Tuple<Integer, Integer> tuple : objectarraylist) {
                 int k = tuple.getA();
