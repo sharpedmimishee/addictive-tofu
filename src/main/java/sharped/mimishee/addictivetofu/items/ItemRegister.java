@@ -1,7 +1,9 @@
 package sharped.mimishee.addictivetofu.items;
 
 
+import baguchan.tofucraft.registry.TofuEffects;
 import baguchan.tofucraft.registry.TofuItemTier;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -29,7 +31,7 @@ public class ItemRegister {
     public static final DeferredItem<Item> ZUNDA_MIRROR = ITEMS.register("zunda_mirror",
             () -> new Item(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
     public static final DeferredItem<Item> ZUNDA_INGOT = ITEMS.register("zunda_ingot",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().food(new FoodProperties.Builder().alwaysEdible().build())));
     public static final DeferredItem<Item> REDBEAN = ITEMS.register("redbean",
             () -> new ItemNameBlockItem(BlockRegister.REDBEAN_CROP.get(), new Item.Properties()));
     public static final DeferredItem<Item> MAGIC_BEAN = ITEMS.register("magicbean",

@@ -1,8 +1,14 @@
 package sharped.mimishee.addictivetofu.blockentity;
 
+import cpw.mods.util.Lazy;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
@@ -11,6 +17,8 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
@@ -18,6 +26,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import org.jetbrains.annotations.Nullable;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
 import sharped.mimishee.addictivetofu.recipe.CompoundingCauldronRecipe;
 import sharped.mimishee.addictivetofu.recipe.CompoundingCauldronRecipeInput;
@@ -46,14 +55,16 @@ public class CompoundingCauldronEntity extends BlockEntity implements Container 
         @Override
         protected void onContentsChanged() {
             setChanged();
+            if (level != null)
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
         }
     };
+//    private final Lazy<FluidTank> fluidOptional = Lazy.of(() -> this.fluidTank);
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 64;
-
-
+    private int maxProgress = 32;
+    public static boolean crafting = false;
 
     public CompoundingCauldronEntity(BlockPos pos, BlockState blockState) {
         super(BlockEntityRegister.COMPOUNDING_CAULDRON_ENTITY.get(), pos, blockState);
@@ -85,9 +96,10 @@ public class CompoundingCauldronEntity extends BlockEntity implements Container 
     @Override
     protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         pTag.put("inventory", itemStackHandler.serializeNBT(pRegistries));
-        pTag.put("fluidTank", fluidTank.writeToNBT(pRegistries, new CompoundTag()));
+//        pTag.put("fluidTank", fluidTank.writeToNBT(pRegistries, new CompoundTag()));
         pTag.putInt("compoundingcauldron.progress", progress);
         pTag.putInt("compoundingcauldron.max_progress", maxProgress);
+        pTag.putBoolean("compoudningcauldron.crafting", crafting);
 
         super.saveAdditional(pTag, pRegistries);
     }
@@ -97,9 +109,10 @@ public class CompoundingCauldronEntity extends BlockEntity implements Container 
         super.loadAdditional(pTag, pRegistries);
 
         itemStackHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
-        fluidTank.readFromNBT(pRegistries, pTag.getCompound("fluidTank"));
+//        fluidTank.readFromNBT(pRegistries, pTag.getCompound("fluidTank"));
         progress = pTag.getInt("compoundingcauldron.progress");
         maxProgress = pTag.getInt("compoundingcauldron.max_progress");
+        crafting = pTag.getBoolean("compoudningcauldron.crafting");
     }
 
     @Override
@@ -168,7 +181,7 @@ public class CompoundingCauldronEntity extends BlockEntity implements Container 
     }
 
     public Item takeItem() {
-        for (var i=0; i > this.itemStackHandler.getSlots(); i++) {
+        for (var i=0; i < this.itemStackHandler.getSlots(); i++) {
             if (!this.itemStackHandler.getStackInSlot(i).isEmpty()) {
                 Item item = this.itemStackHandler.getStackInSlot(i).getItem().asItem();
                 this.itemStackHandler.extractItem(i, 1, false);
@@ -192,41 +205,87 @@ public class CompoundingCauldronEntity extends BlockEntity implements Container 
 
     }
 
+    public FluidStack getFluid() {
+        if (!this.fluidTank.isEmpty()) {
+            return this.fluidTank.getFluid();
+        }
+        return FluidStack.EMPTY;
+    }
+
     private Optional<RecipeHolder<CompoundingCauldronRecipe>> getCurrentRecipe() {
         List<ItemStack> stack = new ArrayList<>();
         for (var i=0; i < this.itemStackHandler.getSlots(); i++) {
-            AddictiveTofu.LOGGER.info(this.itemStackHandler.getStackInSlot(i).toString());
+//            AddictiveTofu.LOGGER.info(this.itemStackHandler.getStackInSlot(i).toString());
             if (!this.itemStackHandler.getStackInSlot(i).isEmpty()) {
                 stack.add(this.itemStackHandler.getStackInSlot(i));
             } else {
                 stack.add(ItemStack.EMPTY);
             }
         }
-        AddictiveTofu.LOGGER.info(this.fluidTank.getFluid().toString());
-        return this.level.getRecipeManager()
-                .getRecipeFor(RecipeRegister.COMPOUNDING_CAULDRON_TYPE.get(), new CompoundingCauldronRecipeInput(stack, this.fluidTank.getFluid()), level);
+        if (this.fluidTank.getFluid().getAmount() == 1000) {
+            return this.level.getRecipeManager()
+                    .getRecipeFor(RecipeRegister.COMPOUNDING_CAULDRON_TYPE.get(), new CompoundingCauldronRecipeInput(stack, this.fluidTank.getFluid()), level);
+        }
+        return Optional.empty();
     }
 
     public boolean hasRecipe() {
         Optional<RecipeHolder<CompoundingCauldronRecipe>> recipe = getCurrentRecipe();
-        if(recipe.isEmpty()) {
-            return false;
-        }
-
-//        ItemStack output = recipe.get().value().getResult();
-        return true;
+        if (recipe.isPresent()) {
+            this.maxProgress = recipe.get().value().compoundingTime();
+            return true;
+        } else { return false; }
     }
 
-    public void craftItem() {
-        SimpleContainer container = new SimpleContainer();
-        ItemStack item = getCurrentRecipe().get().value().result();
-        AddictiveTofu.LOGGER.info(item.toString());
-        container.addItem(item);
-        for (var i=0; i < this.itemStackHandler.getSlots();i++) {
-            this.itemStackHandler.extractItem(i, 1, false);
+    public void toggleCraft() {
+        crafting = !crafting;
+    }
+
+    public void trueCraft() {crafting = true;}
+
+    public void increaseProgress() {
+        if (this.progress+1 <= this.maxProgress) {
+            this.progress = this.progress + 1;
         }
-        this.fluidTank.drain(this.fluidTank.getFluid(), IFluidHandler.FluidAction.EXECUTE);
-//        this.itemStackHandler.insertItem(1, item, false);
-        Containers.dropContents(this.level, this.getBlockPos(), container);
+        AddictiveTofu.LOGGER.info(String.valueOf(this.progress));
+    }
+    public void tick() {
+        if (this.progress == this.maxProgress) {
+            this.progress = 0;
+            this.maxProgress = 32;
+            craftItem();
+        } else if (crafting) {
+            increaseProgress();
+        }
+    }
+
+
+    public void craftItem() {
+//        SimpleContainer container = new SimpleContainer();
+        if (getCurrentRecipe().isPresent()) {
+            ItemStack item = getCurrentRecipe().get().value().result();
+//        AddictiveTofu.LOGGER.info(item.toString());
+//        container.addItem(item);
+            for (var i = 0; i < this.itemStackHandler.getSlots(); i++) {
+                this.itemStackHandler.extractItem(i, 1, false);
+                this.itemStackHandler.insertItem(i, ItemStack.EMPTY, false);
+            }
+            this.fluidTank.fill(FluidStack.EMPTY, IFluidHandler.FluidAction.EXECUTE);
+            AddictiveTofu.LOGGER.info(String.valueOf(this.fluidTank.isEmpty()));
+            this.itemStackHandler.insertItem(0, item, false);
+//        Containers.dropContents(this.level, this.getBlockPos(), container);
+        }
+        toggleCraft();
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
+        return saveWithoutMetadata(pRegistries);
     }
 }

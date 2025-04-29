@@ -2,9 +2,15 @@ package sharped.mimishee.addictivetofu.block;
 
 import baguchan.tofucraft.registry.TofuItems;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.ParticleUtils;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
@@ -18,6 +24,8 @@ import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.BlockHitResult;
@@ -72,11 +80,47 @@ public class CompoundingCauldron extends BaseEntityBlock {
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        super.animateTick(state, level, pos, random);
+        if (CompoundingCauldronEntity.crafting) {
+            double y = pos.getY()+0.5;
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 1.5+0.5, y, pos.getZ()+0.5, -0.5, 0, 0);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 1.5+0.5, y, pos.getZ()+0.5, -0.5, 0, 0);
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()+1.5+0.5, -0.5, 0, 0-0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()+1.5+0.5, -0.5, 0, 0-0.5);
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()+1.5+0.5, 0, 0, -0.5);
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()+1.5+0.5, 0.5, 0, -0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()+1.5+0.5, 0.5, 0, -0.5);
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()+0.5, 0.5, 0, 0);
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()-1.5+0.5, 0.5,  0, 0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()-1.5+0.5, 0.5,  0, 0.5);
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()-1.5+0.5, 0,  0, 0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()-1.5+0.5, 0,  0, 0.5);
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()-1.5+0.5, -0.5,  0, 0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()-1.5+0.5, -0.5,  0, 0.5);
+            for (var i=0;i < 10; i++) {
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 0.5, y + 1.0, pos.getZ() + 0.5, -0.2, 0.2, -0.2);
+            }
+        }
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        if(level.isClientSide()) {
+            return null;
+        }
+
+        return createTickerHelper(blockEntityType, BlockEntityRegister.COMPOUNDING_CAULDRON_ENTITY.get(),
+                (level1, blockPos, blockState, blockEntity) -> blockEntity.tick());
+    }
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(level.getBlockEntity(pos) instanceof CompoundingCauldronEntity compoundingCauldronEntity) {
             if (player.getMainHandItem().isEmpty() && player.isCrouching()) {
+//                AddictiveTofu.LOGGER.info("JUST TAKE IT");
                 player.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(compoundingCauldronEntity.takeItem(), 1));
                 level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
             } else {
@@ -85,10 +129,8 @@ public class CompoundingCauldron extends BaseEntityBlock {
 //                    AddictiveTofu.LOGGER.info("you'd just used TofuStick on the block!");
                     if (compoundingCauldronEntity.hasRecipe()) {
 //                        AddictiveTofu.LOGGER.info("hasRecipe!");
-                        compoundingCauldronEntity.craftItem();
+                        compoundingCauldronEntity.trueCraft();
                     }
-                }else if (player.getMainHandItem().getItem() == TofuItems.TOFU_DIAMOND_AXE.get()){
-                    compoundingCauldronEntity.craftItem();
                 } else if (handler instanceof FluidBucketWrapper) {
                     if (compoundingCauldronEntity.addFluid(((FluidBucketWrapper) handler).getFluid())) {
                         level.playSound(player, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1f, 1f);
