@@ -17,6 +17,7 @@ import sharped.mimishee.addictivetofu.block.BlockRegister;
 import sharped.mimishee.addictivetofu.blockentity.BlockEntityRegister;
 import sharped.mimishee.addictivetofu.entity.EntityRegister;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
+import sharped.mimishee.addictivetofu.particle.ParticleRegister;
 import sharped.mimishee.addictivetofu.recipe.RecipeRegister;
 import sharped.mimishee.addictivetofu.register.CreativeModeTabRegister;
 import sharped.mimishee.addictivetofu.register.ModSounds;
@@ -37,15 +38,16 @@ public class AddictiveTofu
 
         modEventBus.addListener(this::commonSetup);
         BlockRegister.BLOCKS.register(modEventBus);
+        BlockEntityRegister.register(modEventBus);
+        RecipeRegister.register(modEventBus);
         ItemRegister.register(modEventBus);
         CreativeModeTabRegister.CREATIVE_MODE_TABS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
         EntityRegister.ENTITIES.register(modEventBus);
+        ParticleRegister.PARTICLE_TYPES.register(modEventBus);
 
         ModStructureTypes.STRUCTURE_TYPE.register(modEventBus);
         TofuStructurePieceType.STRUCTURE_PIECE_TYPE.register(modEventBus);
-        BlockEntityRegister.register(modEventBus);
-        RecipeRegister.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (AddictiveTofu) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.

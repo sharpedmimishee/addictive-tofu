@@ -13,6 +13,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
 import sharped.mimishee.addictivetofu.blockentity.BlockEntityRegister;
 import sharped.mimishee.addictivetofu.blockentity.renderer.CompoundingCauldronRenderer;
@@ -25,6 +26,8 @@ import sharped.mimishee.addictivetofu.client.render.ZundaSlimeRender;
 import sharped.mimishee.addictivetofu.entity.EntityRegister;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 import sharped.mimishee.addictivetofu.items.ZundaCrossbowItem;
+import sharped.mimishee.addictivetofu.particle.HappyTofuParticle;
+import sharped.mimishee.addictivetofu.particle.ParticleRegister;
 
 @EventBusSubscriber(modid = AddictiveTofu.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class ClientRegister {
@@ -108,5 +111,10 @@ public class ClientRegister {
         event.registerLayerDefinition(ModModelLayers.ANKONIAN, AnkonianModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.CRIMSON_HUNTER, CrimsonHunterModel::createBodyLayer);
 //        event.registerLayerDefinition();
+    }
+
+    @SubscribeEvent
+    public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(ParticleRegister.HAPPY_TOFU.get(), HappyTofuParticle.Provider::new);
     }
 }

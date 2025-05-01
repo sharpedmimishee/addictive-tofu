@@ -1,13 +1,11 @@
 package sharped.mimishee.addictivetofu.blockentity.renderer;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.block.LiquidBlockRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -25,10 +23,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.CampfireBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidType;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
 import sharped.mimishee.addictivetofu.blockentity.CompoundingCauldronEntity;
 
@@ -70,38 +70,34 @@ public class CompoundingCauldronRenderer implements BlockEntityRenderer<Compound
         }
         if (!blockEntity.fluidTank.isEmpty()) {
             poseStack.pushPose();
-            poseStack.translate(0.03, -0.07, 0.2);
-            FluidStack fluid = blockEntity.getFluid();
-            FluidState fluidState = blockEntity.fluidTank.getFluid().getFluid().defaultFluidState();
-            IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(fluid.getFluid());
-            ResourceLocation stillTexture = fluidTypeExtensions.getStillTexture(fluid);
-            FluidState state = fluid.getFluid().defaultFluidState();
-
-            AddictiveTofu.LOGGER.info(stillTexture.getPath());
-            AddictiveTofu.LOGGER.info(state.toString());
-
+            poseStack.translate(0, -0.08, 0);
+            FluidStack fluidStack = blockEntity.fluidTank.getFluid();
+            IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(fluidStack.getFluid());
+            ResourceLocation stillTexture = fluidTypeExtensions.getStillTexture(fluidStack);
+            FluidState state = fluidStack.getFluid().defaultFluidState();
             TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(stillTexture);
             int tintColor = fluidTypeExtensions.getTintColor(state, blockEntity.getLevel(), blockEntity.getBlockPos());
-
-            AddictiveTofu.LOGGER.info(sprite.toString());
-            AddictiveTofu.LOGGER.info(String.valueOf(tintColor));
-//            float height = (((float) blockEntity.fluidTank.getFluidAmount() / blockEntity.fluidTank.getCapacity()) * 0.625f) + 0.25f;
-
-            float height = 0.50f;
             VertexConsumer builder = bufferSource.getBuffer(ItemBlockRenderTypes.getRenderLayer(state));
-
-            drawQuad(builder, poseStack, -0.42f, height, -0.52f, 0.34f, height, 0.22f, sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1(), packedLight, -1);
+            float height = 0.6f;
+//            AddictiveTofu.LOGGER.info(String.valueOf(packedLight));
+            drawQuad(builder, poseStack, -0.32f, height, -0.32f, 0.32f, height, 0.32f, sprite.getU0(), sprite.getV0(), sprite.getU1(), sprite.getV1(), getLightLevelLiquid(blockEntity.getLevel(), blockEntity.getBlockPos()), tintColor);
 //            this.fluidrenderer.tesselate(Objects.requireNonNull(blockEntity.getLevel()), blockEntity.getBlockPos(), bufferSource.getBuffer(RenderType.SOLID), blockEntity.getBlockState(), blockEntity.getBlockState().getFluidState());
             poseStack.popPose();
         }
     }
-    private static void drawVertex(VertexConsumer builder, PoseStack poseStack, float x, float y, float z, float u, float v, int packedLight, int color) {
+    private static void drawVertex(VertexConsumer builder, PoseStack poseStack,
+                                   float x, float y, float z, float u, float v,
+                                   int packedLight, int color) {
+
         builder.addVertex(poseStack.last().pose(), x, y, z)
                 .setColor(color)
                 .setUv(u, v)
                 .setUv2(packedLight, packedLight)
-                .setNormal(1, 0, 0);
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(packedLight)
+                .setNormal(poseStack.last(), 0, 1, 0);
     }
+
 
     private static void drawQuad(VertexConsumer builder, PoseStack poseStack, float x0, float y0, float z0, float x1, float y1, float z1, float u0, float v0, float u1, float v1, int packedLight, int color) {
         drawVertex(builder, poseStack, x0, y0, z0, u0, v0, packedLight, color);
@@ -114,5 +110,10 @@ public class CompoundingCauldronRenderer implements BlockEntityRenderer<Compound
         int bLight = level.getBrightness(LightLayer.BLOCK, pos);
         int sLight = level.getBrightness(LightLayer.SKY, pos);
         return LightTexture.pack(bLight, sLight);
+    }
+    private int getLightLevelLiquid(Level level, BlockPos pos) {
+        int bLight = level.getBrightness(LightLayer.BLOCK, pos);
+        int sLight = level.getBrightness(LightLayer.SKY, pos);
+        return LightTexture.pack(bLight+10, sLight);
     }
 }

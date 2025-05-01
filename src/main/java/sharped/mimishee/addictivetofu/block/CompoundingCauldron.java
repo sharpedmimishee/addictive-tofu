@@ -1,9 +1,11 @@
 package sharped.mimishee.addictivetofu.block;
 
 import baguchan.tofucraft.registry.TofuItems;
+import baguchan.tofucraft.registry.TofuParticleTypes;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -23,6 +25,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -41,6 +44,9 @@ import org.slf4j.LoggerFactory;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
 import sharped.mimishee.addictivetofu.blockentity.BlockEntityRegister;
 import sharped.mimishee.addictivetofu.blockentity.CompoundingCauldronEntity;
+import sharped.mimishee.addictivetofu.particle.ParticleRegister;
+
+import java.util.Random;
 
 public class CompoundingCauldron extends BaseEntityBlock {
     private static final Logger log = LoggerFactory.getLogger(CompoundingCauldron.class);
@@ -83,25 +89,51 @@ public class CompoundingCauldron extends BaseEntityBlock {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         super.animateTick(state, level, pos, random);
+        double y = pos.getY()+0.5;
         if (CompoundingCauldronEntity.crafting) {
-            double y = pos.getY()+0.5;
-                level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 1.5+0.5, y, pos.getZ()+0.5, -0.5, 0, 0);
-            level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 1.5+0.5, y, pos.getZ()+0.5, -0.5, 0, 0);
-                level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()+1.5+0.5, -0.5, 0, 0-0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 1.5+0.5, y, pos.getZ()+0.5, -0.5, 0, 0.1);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 1.5+0.5, y, pos.getZ()+0.5, -0.5, 0, -0.1);
+
             level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()+1.5+0.5, -0.5, 0, 0-0.5);
-                level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()+1.5+0.5, 0, 0, -0.5);
-                level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()+1.5+0.5, 0.5, 0, -0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()+1.5+0.5, -0.5, 0, 0-0.5);
+
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()+1.5+0.5, 0.1, 0, -0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()+1.5+0.5, 0.1, 0, -0.5);
+
             level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()+1.5+0.5, 0.5, 0, -0.5);
-                level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()+0.5, 0.5, 0, 0);
-                level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()-1.5+0.5, 0.5,  0, 0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()+1.5+0.5, 0.5, 0, -0.5);
+
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()+0.5, 0.5, 0, -0.1);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()+0.5, 0.5, 0, -0.1);
+
             level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()-1.5+0.5, 0.5,  0, 0.5);
-                level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()-1.5+0.5, 0,  0, 0.5);
-            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()-1.5+0.5, 0,  0, 0.5);
-                level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()-1.5+0.5, -0.5,  0, 0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()-1.5+0.5, y, pos.getZ()-1.5+0.5, 0.5,  0, 0.5);
+
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()-1.5+0.5, 0.1,  0, 0.5);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+0.5, y, pos.getZ()-1.5+0.5, -0.1,  0, 0.5);
+
             level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()-1.5+0.5, -0.5,  0, 0.5);
-            for (var i=0;i < 10; i++) {
-                level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 0.5, y + 1.0, pos.getZ() + 0.5, -0.2, 0.2, -0.2);
+            level.addParticle(ParticleTypes.ENCHANT, pos.getX()+1.5+0.5, y, pos.getZ()-1.5+0.5, -0.5,  0, 0.5);
+
+            for (var i=0;i < 20; i++) {
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 0.5+new Random().nextInt(-5, 6), y + new Random().nextInt(-5, 6), pos.getZ() + 0.5+new Random().nextInt(-5, 6), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3));
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 0.5+new Random().nextInt(-5, 6), y + new Random().nextInt(-5, 6), pos.getZ() + 0.5+new Random().nextInt(-5, 6), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3));
+                level.addParticle(TofuParticleTypes.TOFU_PORTAL.get(), pos.getX() + 0.5+new Random().nextInt(-5, 6), y + new Random().nextInt(-5, 6), pos.getZ() + 0.5+new Random().nextInt(-5, 6), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3));
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 0.5+new Random().nextInt(-5, 6), y + new Random().nextInt(-5, 6), pos.getZ() + 0.5+new Random().nextInt(-5, 6), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3));
+                level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 0.5+new Random().nextInt(-5, 6), y + new Random().nextInt(-5, 6), pos.getZ() + 0.5+new Random().nextInt(-5, 6), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3), new Random().nextInt(-3, 3));
             }
+        }
+        if (CompoundingCauldronEntity.end_crafting != 0) {
+            level.addParticle(ParticleRegister.HAPPY_TOFU.get(), pos.getX()+0.5, y+1.5, pos.getZ()+0.5, -1.2, -1.5, -1.2);
+            level.addParticle(ParticleRegister.HAPPY_TOFU.get(), pos.getX()+0.5, y+1.5, pos.getZ()+0.5, -1.2, -1.5, -1.2);
+            level.addParticle(ParticleRegister.HAPPY_TOFU.get(), pos.getX()+0.5, y+1.5, pos.getZ()+0.5, 1.2, 1.5, 1.2);
+            level.addParticle(ParticleRegister.HAPPY_TOFU.get(), pos.getX()+0.5, y+1.5, pos.getZ()+0.5, 1.2, 1.5, 1.2);
+
+            for (var i=0; i < level.players().size(); i++) {
+                level.playSound(level.players().get(i), pos, SoundEvents.AMETHYST_BLOCK_BREAK, SoundSource.BLOCKS, 1.5f, 1f);
+                level.playSound(level.players().get(i), pos, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.5f, 1f);
+            }
+            CompoundingCauldronEntity.end_crafting--;
         }
     }
 
@@ -126,9 +158,7 @@ public class CompoundingCauldron extends BaseEntityBlock {
             } else {
                 IFluidHandlerItem handler = FluidUtil.getFluidHandler(stack.copyWithCount(1)).orElse(null);
                 if (player.getMainHandItem().getItem() == TofuItems.TOFUSTICK.get()) {
-//                    AddictiveTofu.LOGGER.info("you'd just used TofuStick on the block!");
                     if (compoundingCauldronEntity.hasRecipe()) {
-//                        AddictiveTofu.LOGGER.info("hasRecipe!");
                         compoundingCauldronEntity.trueCraft();
                     }
                 } else if (handler instanceof FluidBucketWrapper) {
