@@ -11,6 +11,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
 
 import java.util.ArrayList;
@@ -54,6 +55,10 @@ public record CompoundingCauldronRecipe(List<Ingredient> itemsInput, FluidIngred
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries) {
         return this.result;
+    }
+
+    public FluidStack getFluidInput() {
+        return this.fluidInput.getStacks()[0];
     }
 
     @Override

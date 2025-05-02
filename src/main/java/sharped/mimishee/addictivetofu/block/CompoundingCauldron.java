@@ -91,6 +91,10 @@ public class CompoundingCauldron extends BaseEntityBlock {
         super.animateTick(state, level, pos, random);
         double y = pos.getY()+0.5;
         if (CompoundingCauldronEntity.crafting) {
+            for (var i=0; i < level.players().size(); i++) {
+                level.playSound(level.players().get(i), pos, SoundEvents.AMETHYST_BLOCK_PLACE, SoundSource.BLOCKS, 1f, 0.64f);
+//                level.playSound(level.players().get(i), pos, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.5f, 1f);
+            }
             level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 1.5+0.5, y, pos.getZ()+0.5, -0.5, 0, 0.1);
             level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 1.5+0.5, y, pos.getZ()+0.5, -0.5, 0, -0.1);
 
@@ -131,7 +135,7 @@ public class CompoundingCauldron extends BaseEntityBlock {
 
             for (var i=0; i < level.players().size(); i++) {
                 level.playSound(level.players().get(i), pos, SoundEvents.AMETHYST_BLOCK_BREAK, SoundSource.BLOCKS, 1.5f, 1f);
-                level.playSound(level.players().get(i), pos, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 0.5f, 1f);
+                level.playSound(level.players().get(i), pos, SoundEvents.LAVA_POP, SoundSource.BLOCKS, 1f, 1f);
             }
             CompoundingCauldronEntity.end_crafting--;
         }
