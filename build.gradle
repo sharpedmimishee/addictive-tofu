@@ -123,12 +123,23 @@ repositories {
     maven {
         url "https://api.modrinth.com/maven"
     }
+    maven {
+        // location of the maven that hosts JEI files since January 2023
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
 }
 dependencies {
     implementation "maven.modrinth:bagus-lib:1.21.1-13.12.0"
     implementation "maven.modrinth:tofucraftreload:1.21.1-12.9.0.0"
+    compileOnly("mezz.jei:jei-1.21-neoforge-api:19.8.2.99")
+    runtimeOnly "curse.maven:tmrv-1194921:6486051"
     runtimeOnly "maven.modrinth:jade:15.10.0+neoforge"
-    runtimeOnly "curse.maven:tmrv-1194921:6269681"
     runtimeOnly "curse.maven:emi-580555:6420931"
     runtimeOnly "curse.maven:emi-loot-681783:6155842"
     runtimeOnly "curse.maven:fzzy-config-1005914:6405153"

@@ -40,6 +40,16 @@ public class ItemRegister {
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).build())));
     public static final DeferredItem<Item> TOFU_PAPER = ITEMS.register("tofu_paper",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> TOFU_JADE = ITEMS.register("tofu_jade",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> POLISHING_TOFU_JADE = ITEMS.register("polishing_tofu_jade",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LUSTROUS_TOFU_JADE = ITEMS.register("lustrous_tofu_jade",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PALE_GLOWING_TOFU_JADE = ITEMS.register("pale_glowing_tofu_jade",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> GLOWING_TOFU_JADE = ITEMS.register("glowing_tofu_jade",
+            () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> ZUNDA_CROSSBOW = ITEMS.register("zunda_crossbow",
             () -> new ZundaCrossbowItem(new Item.Properties().rarity(Rarity.RARE).durability(584).stacksTo(1)));
     public static final DeferredItem<Item> ANKO_BOW = ITEMS.register("anko_bow",

@@ -23,6 +23,11 @@ public class ItemModelsGenerator extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ItemRegister.NULL_TOFU.get());
         basicItem(ItemRegister.ADV_TOFU.get());
+        basicItem(ItemRegister.TOFU_JADE.get());
+        basicItem(ItemRegister.POLISHING_TOFU_JADE.get());
+        basicItem(ItemRegister.LUSTROUS_TOFU_JADE.get());
+        basicItem(ItemRegister.PALE_GLOWING_TOFU_JADE.get());
+        basicItem(ItemRegister.GLOWING_TOFU_JADE.get());
         tfSwordItem(ItemRegister.TF_SWORD);
         simpleBlockItem(BlockRegister.ADV_TOFU_BARREL.get());
         simpleBlockItem(BlockRegister.ADV_TOFU_BLOCK.get());
