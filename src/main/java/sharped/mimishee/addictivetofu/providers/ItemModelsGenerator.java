@@ -24,6 +24,7 @@ public class ItemModelsGenerator extends ItemModelProvider {
         basicItem(ItemRegister.NULL_TOFU.get());
         basicItem(ItemRegister.ADV_TOFU.get());
         basicItem(ItemRegister.TOFU_JADE.get());
+        basicItem(ItemRegister.ZUNDA_STEEL.get());
         basicItem(ItemRegister.POLISHING_TOFU_JADE.get());
         basicItem(ItemRegister.LUSTROUS_TOFU_JADE.get());
         basicItem(ItemRegister.PALE_GLOWING_TOFU_JADE.get());
