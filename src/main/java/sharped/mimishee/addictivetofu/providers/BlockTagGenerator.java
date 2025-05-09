@@ -21,6 +21,6 @@ public class BlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(BlockRegister.ADV_TOFU_BARREL.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BlockRegister.ADV_TOFU_BLOCK.get());
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(BlockRegister.TOFU_TERRAIN_REDBEAN.get());
-        this.tag(BlockTags.NEEDS_STONE_TOOL).add(BlockRegister.ADV_TOFU_BLOCK.get());
+        this.tag(BlockTags.NEEDS_STONE_TOOL).add(BlockRegister.ADV_TOFU_BLOCK.get()).add(BlockRegister.COMPOUNDING_CAULDRON.get());
     }
 }

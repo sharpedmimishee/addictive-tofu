@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import sharped.mimishee.addictivetofu.block.BlockRegister;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 
 import java.util.List;
@@ -99,6 +100,23 @@ public class ModAdvancements extends AdvancementProvider {
                     .save(consumer,
                             ResourceLocation.fromNamespaceAndPath("addictivetofu", "main/adv_tofu"),
                             existingFileHelper);
+            AdvancementHolder compounding_cauldron = Advancement.Builder.advancement()
+                    .display(
+                            new ItemStack(BlockRegister.COMPOUNDING_CAULDRON.asItem()),
+                            Component.translatable("advancements.addictivetofu.main.compounding_cauldron.title"),
+                            Component.translatable("advancements.addictivetofu.main.compounding_cauldron.desc"),
+                            null,
+                            AdvancementType.TASK,
+                            true,
+                            true,
+                            false
+                    )
+                    .parent(root)
+                    .addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegister.COMPOUNDING_CAULDRON))
+                    .save(consumer,
+                            ResourceLocation.fromNamespaceAndPath("addictivetofu", "main/compounding_cauldron"),
+                            existingFileHelper);
+
 
             AdvancementHolder tofu_paper = Advancement.Builder.advancement()
                     .display(
@@ -112,7 +130,7 @@ public class ModAdvancements extends AdvancementProvider {
                             true, //chat
                             false //hidden or not
                     )
-                    .parent(root)
+                    .parent(compounding_cauldron)
                     .addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ItemRegister.TOFU_PAPER))
                     .save(consumer,
                             ResourceLocation.fromNamespaceAndPath("addictivetofu", "main/tofu_paper"),

@@ -59,6 +59,8 @@ public class BlockLootTables extends BlockLootSubProvider {
                 ItemRegister.REDBEAN.get(), ItemRegister.REDBEAN.get(), lootItemConditionBuilder));
 
         this.otherWhenSilkTouch(BlockRegister.TOFU_TERRAIN_REDBEAN.get(), TofuBlocks.TOFU_TERRAIN.get());
+
+        this.dropSelf(BlockRegister.COMPOUNDING_CAULDRON.get());
     }
 
     @Override

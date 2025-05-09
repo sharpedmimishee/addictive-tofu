@@ -13,6 +13,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
+import sharped.mimishee.addictivetofu.AddictiveTofu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public record CompoundingCauldronRecipe(List<Ingredient> itemsInput, FluidIngred
     @Override
     public boolean matches(CompoundingCauldronRecipeInput input, Level level) {
         List<ItemStack> items = new ArrayList<>();
-        for (var i=0;i < 9;i++) {items.add(input.getItem(i));}
+        for (var i=0;i < this.itemsInput.size();i++) {items.add(input.getItem(i));}
 
         if (items.size() != this.itemsInput.size()) return false;
         for (var i=0;i < this.itemsInput.size(); i++) {
@@ -49,7 +50,11 @@ public record CompoundingCauldronRecipe(List<Ingredient> itemsInput, FluidIngred
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        return Recipe.super.getIngredients();
+        NonNullList<Ingredient> ingredients = NonNullList.create();
+        for (var i=0;i < itemsInput().size();i++) {
+            ingredients.add(itemsInput.get(i));
+        }
+        return ingredients;
     }
 
     @Override

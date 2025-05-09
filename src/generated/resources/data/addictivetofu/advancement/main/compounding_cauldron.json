@@ -1,11 +1,11 @@
 {
-  "parent": "addictivetofu:main/compounding_cauldron",
+  "parent": "addictivetofu:main/root",
   "criteria": {
     "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "addictivetofu:tofu_paper"
+            "items": "addictivetofu:compounding_cauldron"
           }
         ]
       },
@@ -14,14 +14,14 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.addictivetofu.main.tofu_paper.description"
+      "translate": "advancements.addictivetofu.main.compounding_cauldron.desc"
     },
     "icon": {
       "count": 1,
-      "id": "addictivetofu:tofu_paper"
+      "id": "addictivetofu:compounding_cauldron"
     },
     "title": {
-      "translate": "advancements.addictivetofu.main.tofu_paper.title"
+      "translate": "advancements.addictivetofu.main.compounding_cauldron.title"
     }
   },
   "requirements": [

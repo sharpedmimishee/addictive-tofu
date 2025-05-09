@@ -10,6 +10,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import sharped.mimishee.addictivetofu.AddictiveTofu;
+import sharped.mimishee.addictivetofu.block.tfenergy.TFPlantGrower;
 import sharped.mimishee.addictivetofu.items.ItemRegister;
 
 import java.util.Objects;
@@ -33,6 +34,9 @@ public class BlockRegister {
 
     public static final DeferredBlock<Block> COMPOUNDING_CAULDRON = register("compounding_cauldron",
             () -> new CompoundingCauldron(BlockBehaviour.Properties.of().noOcclusion()));
+
+    public static final DeferredBlock<Block> TFPLANT_GROWER = register("tfplant_grower",
+            () -> new TFPlantGrower(BlockBehaviour.Properties.of().noOcclusion()));
 
     private static <T extends Block> DeferredBlock<T> baseRegister(String name, Supplier<? extends T> block, Function<DeferredBlock<T>, Supplier<? extends Item>> item) {
         DeferredBlock<T> register = BLOCKS.register(name, block);

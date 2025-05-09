@@ -2,39 +2,33 @@
   "type": "addictivetofu:compounding_cauldron",
   "itemInput": [
     {
-      "item": "tofucraft:zunda"
+      "item": "minecraft:paper"
     },
     {
-      "item": "tofucraft:zunda"
+      "item": "tofucraft:tofukinu"
     },
     {
-      "item": "tofucraft:zunda"
+      "item": "tofucraft:tofumomen"
     },
     {
-      "item": "tofucraft:zunda"
+      "item": "tofucraft:tofumomen"
     },
     {
-      "item": "minecraft:iron_ingot"
+      "item": "tofucraft:tofumomen"
     },
     {
-      "item": "minecraft:iron_ingot"
+      "item": "tofucraft:seeds_soybeans"
     },
     {
-      "item": "tofucraft:edamame"
-    },
-    {
-      "item": "tofucraft:edamame"
-    },
-    {
-      "item": "tofucraft:edamame"
+      "item": "tofucraft:seeds_soybeans"
     }
   ],
   "fluidInput": {
     "fluid": "tofucraft:soymilk"
   },
-  "tick": 64,
+  "tick": 128,
   "result": {
-    "id": "addictivetofu:zunda_ingot",
+    "id": "addictivetofu:tofu_paper",
     "count": 1
   }
 }
